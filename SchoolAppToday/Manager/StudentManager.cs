@@ -7,10 +7,11 @@ using System.Web;
 
 namespace SchoolAppToday.Manager
 {
-    public class StudentManager
+   public class StudentManager
     {
         SchoolAppTodayEntities db = new SchoolAppTodayEntities();
         GeneralManager general = new GeneralManager();
+
         UserManager userManager = new UserManager();
 
         public StudentManager()
