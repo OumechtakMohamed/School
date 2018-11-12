@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SchoolAppToday</name>
+    </assembly>
+    <members>
+        <member name="M:SchoolAppToday.Controller.ClasseController.GetClasses">
+            <summary>
+            Get all classes
+            </summary>
+            <remarks>
+            Get a list of all classes
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.ClasseController.GetClasse(System.String)">
+            <summary>
+            Get a classe
+            </summary>
+            <remarks>
+            Get a classe by id
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.ClasseController.GetClasseTeachers(System.String)">
+            <summary>
+            Get teachers of a classe
+            </summary>
+            <remarks>
+            Get a list of teachers by classe
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.ClasseController.GetClasseSubjects(System.String)">
+            <summary>
+            Get all subjects for a classe
+            </summary>
+            <remarks>
+            Get a list of subjects of a classe
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.ClasseController.Delete(System.String)">
+            <summary>
+            Delete a classe
+            </summary>
+            <remarks>
+            Delete a classe
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.ClasseController.CreateClasse(SchoolAppToday.Classes)">
+            <summary>
+            Create a classe
+            </summary>
+            <remarks>
+            Create a classe
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.ClasseController.UpdateClasse(SchoolAppToday.Classes)">
+            <summary>
+            Update a classe
+            </summary>
+            <remarks>
+            Update a classe
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.ClasseController.CreateClasseSubject(System.String,System.String)">
+            <summary>
+            Create a subject for a classe
+            </summary>
+            <remarks>
+            Create a subject for a classe
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.StudentController.GetStudents">
+            <summary>
+            Get all students
+            </summary>
+            <remarks>
+            Get a list of all students
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.StudentController.GetStudent(System.Int32)">
+            <summary>
+            Get student
+            </summary>
+            <remarks>
+            Get student by id
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.StudentController.Delete(System.Int32)">
+            <summary>
+            delete student
+            </summary>
+            <remarks>
+            delete student by id
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.StudentController.CreateSudent(SchoolAppToday.Students)">
+            <summary>
+            create a student
+            </summary>
+            <remarks>
+            create student
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.StudentController.UpdateSudent(SchoolAppToday.Students)">
+            <summary>
+            Update student
+            </summary>
+            <remarks>
+            Update student
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.SubjectController.GetSubjects">
+            <summary>
+            Get all subjects
+            </summary>
+            <remarks>
+            Get a list of all subject
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.SubjectController.GetSubject(System.String)">
+            <summary>
+            Get a subject by code
+            </summary>
+            <remarks>
+            Get a subject by code
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.SubjectController.GetSubjectClasses(System.String)">
+            <summary>
+            Get all classes of a subject
+            </summary>
+            <remarks>
+            Get a list of all subjects of a subject
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.SubjectController.Delete(System.String)">
+            <summary>
+            Delete a subejct
+            </summary>
+            <remarks>
+            Delete a subject by code
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.SubjectController.CreateSubject(SchoolAppToday.Subjects)">
+            <summary>
+            Create a subject
+            </summary>
+            <remarks>
+            Create a subject
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.SubjectController.UpdateSubject(SchoolAppToday.Subjects)">
+            <summary>
+            Uddate a subject
+            </summary>
+            <remarks>
+            Update a subject
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.TeacherController.GetTeachers">
+            <summary>
+            Get all teachers
+            </summary>
+            <remarks>
+            Get a list of all teachers
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.TeacherController.GetTeacher(System.Int32)">
+            <summary>
+            Get a teacher by id
+            </summary>
+            <remarks>
+            Get a teacher by id
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.TeacherController.GetTeacherClasses(System.Int32)">
+            <summary>
+            Get all classes of a teacher by id
+            </summary>
+            <remarks>
+            Get a list of all classes by teacher id
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.TeacherController.Delete(System.Int32)">
+            <summary>
+            Delete a teacher by id
+            </summary>
+            <remarks>
+            Delete a teacher by id
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.TeacherController.CreateTeacher(SchoolAppToday.Teachers)">
+            <summary>
+            Create a teacher
+            </summary>
+            <remarks>
+            Create a teacher
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.TeacherController.UpdateTeacher(SchoolAppToday.Teachers)">
+            <summary>
+            Update a teacher
+            </summary>
+            <remarks>
+            Update a teacher
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.TeacherController.CreateTeacherClasse(System.Int32,System.String)">
+            <summary>
+            Create a classe for a teacher
+            </summary>
+            <remarks>
+            Create a classe for a teacher
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.UserController.GetUsers">
+            <summary>
+            Get all users
+            </summary>
+            <remarks>
+            Get a list of all users
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.UserController.GetUser(System.Int32)">
+            <summary>
+            Get a user by id
+            </summary>
+            <remarks>
+            Get a user by id
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.UserController.Delete(System.Int32)">
+            <summary>
+            Delete a user by id
+            </summary>
+            <remarks>
+            Delete a user by id
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.UserController.CreateUser(SchoolAppToday.Users)">
+            <summary>
+            Create a user
+            </summary>
+            <remarks>
+            Create a user
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.UserController.UpdateUser(SchoolAppToday.Users)">
+            <summary>
+            Update a user
+            </summary>
+            <remarks>
+            Update a user
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+    </members>
+</doc>
