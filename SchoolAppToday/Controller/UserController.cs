@@ -20,7 +20,7 @@ namespace SchoolAppToday.Controller
         /// </remarks>
         /// <returns></returns>
         /// <response code="200"></response>
-        [Route("api/users")]
+        [Route("api/user1s")]
         [HttpGet]
         public List<Users> GetUsers()
         {
@@ -35,7 +35,7 @@ namespace SchoolAppToday.Controller
         /// </remarks>
         /// <returns></returns>
         /// <response code="200"></response>
-        [Route("api/user/{id}")]
+        [Route("api/user1/{id}")]
         [HttpGet]
         public Users GetUser(int id)
         {
@@ -50,7 +50,7 @@ namespace SchoolAppToday.Controller
         /// </remarks>
         /// <returns></returns>
         /// <response code="200"></response>
-        [Route("api/user/{id}")]
+        [Route("api/user1/{id}")]
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
@@ -67,7 +67,7 @@ namespace SchoolAppToday.Controller
         /// </remarks>
         /// <returns></returns>
         /// <response code="200"></response>
-        [Route("api/user/create")]
+        [Route("api/user1/create")]
         [HttpPost]
         public IHttpActionResult CreateUser([FromBody]Users user)
         {
@@ -86,7 +86,7 @@ namespace SchoolAppToday.Controller
         /// </remarks>
         /// <returns></returns>
         /// <response code="200"></response>
-        [Route("api/user/update")]
+        [Route("api/user1/update")]
         [HttpPut]
         public IHttpActionResult UpdateUser([FromBody]Users user)
         {

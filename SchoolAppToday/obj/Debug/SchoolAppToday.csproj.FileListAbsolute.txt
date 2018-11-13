@@ -180,3 +180,9 @@ C:\Users\X1\Source\Repos\School\SchoolAppToday\bin\Thinktecture.IdentityModel.xm
 C:\Users\X1\Source\Repos\School\SchoolAppToday\obj\Debug\SchoolAppToday.csprojResolveAssemblyReference.cache
 C:\Users\X1\Source\Repos\School\SchoolAppToday\obj\Debug\SchoolAppToday.dll
 C:\Users\X1\Source\Repos\School\SchoolAppToday\obj\Debug\SchoolAppToday.pdb
+C:\Users\X1\Source\Repos\School\SchoolAppToday\obj\Debug\SchoolAppToday.Migrations.InitialDB.resources
+C:\Users\X1\Source\Repos\School\SchoolAppToday\obj\Debug\SchoolAppToday.csproj.GenerateResource.Cache
+C:\Users\X1\Source\Repos\School\SchoolAppToday\obj\Debug\SchoolAppToday.Migrations.SecondDB.resources
+C:\Users\X1\Source\Repos\School\SchoolAppToday\obj\Debug\SchoolAppToday.Migrations.AddProperties.resources
+C:\Users\X1\Source\Repos\School\SchoolAppToday\bin\System.Web.Http.Cors.dll
+C:\Users\X1\Source\Repos\School\SchoolAppToday\bin\System.Web.Http.Cors.xml
