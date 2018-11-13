@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+button.btn-submit{
+	background-color:  #38547b;
+	color : #fff;
+	width: 100%;
+}
+
+button.btn-submit:focus,button.btn-submit:hover{
+	background-color: #38547b;
+}
+
+input.ng-invalid.ng-dirty{
+	border-bottom-color: red !important;
+	box-shadow:  red !important;
+}
