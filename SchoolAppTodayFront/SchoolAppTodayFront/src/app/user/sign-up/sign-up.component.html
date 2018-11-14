@@ -1,0 +1,30 @@
+<form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+    <div class="row">
+    <div class="input-field col s6">
+    <input type="text" class="invalid validate" name="UserName" #UserName="ngModel" [(ngModel)] = "user.UserName" required>
+    <label data-error="Required field!" data-success="good name">UserName</label>
+    </div>
+    <div class="input-field col s6">
+    <input type="password" class="invalid validate" name="Password" #Password="ngModel" [(ngModel)] = "user.Password" required minlength="3">
+    <label [attr.data-error]="Password.errors != null?(Password.errors.required?'Required field!':'Minimus 3 characters needed'):''" data-success="good password">Password</label>
+    </div>
+    <div class="input-field col s6">
+    <input type="text" class="invalid validate" name="Email" #Email="ngModel" [(ngModel)] = "user.Email" email >
+    <label data-error="Invalid email" data-success="good email">Email</label>
+    </div>
+    <div class="input-field col s6">
+    <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)] = "user.FirstName" >
+    <label>FirstName</label>
+    </div>
+    <div class="input-field col s6">
+    <input type="text" name="LastName" #LastName="ngModel" [(ngModel)] = "user.LastName" >
+    <label>LastName</label>
+    </div>
+</div>
+<div class="row">
+        <div class="input-field col s12">
+    <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit">Submit</button>
+    </div>
+</div> 
+</form>
+

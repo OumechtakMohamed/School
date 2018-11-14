@@ -1,3 +1,10 @@
+div.sm-jumbotron{
+	margin : 0px;
+	padding: 2rem;
+	background-color: #38547b;
+	color: #fff;
+}
+
 button.btn-submit{
 	background-color:  #38547b;
 	color : #fff;
@@ -10,5 +17,24 @@ button.btn-submit:focus,button.btn-submit:hover{
 
 input.ng-invalid.ng-dirty{
 	border-bottom-color: red !important;
-	box-shadow:  red !important;
+	box-shadow:  0 1px 0 0 red !important;
+}
+
+div.error-message i{
+	vertical-align: middle !important;
+}
+
+.tabs .tab{
+	text-transform: none !important;
+	line-height: 65px;
+	height: 65px;
+}
+
+.tabs .tab a{
+	font-size: 25px;
+	color: grey !important;
+}
+
+.tabs .tab a.active{
+	background-color: #fff !important;
 }
