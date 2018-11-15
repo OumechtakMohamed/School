@@ -271,6 +271,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationOAuthProvider.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Ass_Classe_Subject.cs">
@@ -329,6 +330,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SchoolToday.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Startup.cs" />
     <Compile Include="Students.cs">
       <DependentUpon>SchoolToday.tt</DependentUpon>
     </Compile>

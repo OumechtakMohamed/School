@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/shared/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  isLoginError : boolean = false;
+  constructor(private userService : UserService, private router : Router) { }
 
   ngOnInit() {
+  }
+
+  OnSubmit(userName, password){
+      this.userService.userAuthentication(userName,password).subscribe((data : any)=>{
+        localStorage.setItem('userToken', data.access_token);
+        console.log('data', data);
+        this.router.navigate(['/home']);
+      },
+      (err : HttpErrorResponse) => {
+        this.isLoginError = true;
+      });
   }
 
 }
