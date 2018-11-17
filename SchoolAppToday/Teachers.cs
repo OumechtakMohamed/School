@@ -24,12 +24,11 @@ namespace SchoolAppToday
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Nullable<int> Age { get; set; }
-        public int User_Id { get; set; }
         public string Subject_Code { get; set; }
+        public int User_Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ass_Prof_Classe> Ass_Prof_Classe { get; set; }
         public virtual Subjects Subjects { get; set; }
-        public virtual Users Users { get; set; }
     }
 }

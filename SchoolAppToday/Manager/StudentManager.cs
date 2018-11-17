@@ -9,10 +9,8 @@ namespace SchoolAppToday.Manager
 {
    public class StudentManager
     {
-        SchoolAppTodayEntities db = new SchoolAppTodayEntities();
+        SchoolAppEntities db = new SchoolAppEntities();
         GeneralManager general = new GeneralManager();
-
-        UserManager userManager = new UserManager();
 
         public StudentManager()
         {
@@ -32,12 +30,8 @@ namespace SchoolAppToday.Manager
         public bool DeleteStudentFromDB(int id)
         {
             bool result1 = false;
-            bool result2 = false;
             var student = db.Students
                     .Where(s => s.Id == id)
-                    .FirstOrDefault();
-            var user = db.Users
-                .Where(s => s.Id == student.User_Id)
                     .FirstOrDefault();
             if (student != null)
             {
@@ -54,20 +48,8 @@ namespace SchoolAppToday.Manager
                     result1 = false;
                 }
             }
-            if(user != null) { 
-                db.Entry(user).State = System.Data.Entity.EntityState.Deleted;
-                try
-                {
-                    db.SaveChanges();
-                    result2 = true;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                    result2 = false;
-                }
-            }
-            return result1 || result2;
+           
+            return result1;
         }
 
         public bool CreateStudentIntoDB(Students stud)
@@ -87,30 +69,6 @@ namespace SchoolAppToday.Manager
             return rep;
         }
 
-
-        public int CreateStudentIntoUserDB(Students stud)
-        {
-            int rep = -1;
-            var users = db.Set<Users>();
-            Users user = new Users();
-            user.Login = stud.FirstName[0] + stud.LastName;
-            user.Password = general.RandomString(10);
-            if(!userManager.CheckUserExistence(user))
-            {
-                users.Add(user);
-                try
-                {
-                    db.SaveChanges();
-                    rep = user.Id;
-                }
-                catch
-                {
-                    rep = -1;
-                }
-                return rep;
-            }
-            else return -1;
-        }
 
         public bool UpdateStudentIntoDB(Students stud)
         {

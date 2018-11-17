@@ -264,55 +264,5 @@
             <returns></returns>
             <response code="200"></response>
         </member>
-        <member name="M:SchoolAppToday.Controller.UserController.GetUsers">
-            <summary>
-            Get all users
-            </summary>
-            <remarks>
-            Get a list of all users
-            </remarks>
-            <returns></returns>
-            <response code="200"></response>
-        </member>
-        <member name="M:SchoolAppToday.Controller.UserController.GetUser(System.Int32)">
-            <summary>
-            Get a user by id
-            </summary>
-            <remarks>
-            Get a user by id
-            </remarks>
-            <returns></returns>
-            <response code="200"></response>
-        </member>
-        <member name="M:SchoolAppToday.Controller.UserController.Delete(System.Int32)">
-            <summary>
-            Delete a user by id
-            </summary>
-            <remarks>
-            Delete a user by id
-            </remarks>
-            <returns></returns>
-            <response code="200"></response>
-        </member>
-        <member name="M:SchoolAppToday.Controller.UserController.CreateUser(SchoolAppToday.Users)">
-            <summary>
-            Create a user
-            </summary>
-            <remarks>
-            Create a user
-            </remarks>
-            <returns></returns>
-            <response code="200"></response>
-        </member>
-        <member name="M:SchoolAppToday.Controller.UserController.UpdateUser(SchoolAppToday.Users)">
-            <summary>
-            Update a user
-            </summary>
-            <remarks>
-            Update a user
-            </remarks>
-            <returns></returns>
-            <response code="200"></response>
-        </member>
     </members>
 </doc>

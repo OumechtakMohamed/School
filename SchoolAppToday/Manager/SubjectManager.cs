@@ -8,7 +8,7 @@ namespace SchoolAppToday.Manager
 {
     public class SubjectManager
     {
-        SchoolAppTodayEntities db = new SchoolAppTodayEntities();
+        SchoolAppEntities db = new SchoolAppEntities();
         public SubjectManager()
         {
             db.Configuration.ProxyCreationEnabled = false;

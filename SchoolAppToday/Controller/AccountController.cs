@@ -48,5 +48,13 @@ namespace SchoolAppToday.Controller
             };
             return model;
         }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("api/ForAdminRole")]
+        public string ForAdminRole()
+        {
+            return "For admin role";
+        }
     }
 }

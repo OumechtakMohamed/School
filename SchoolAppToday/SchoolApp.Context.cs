@@ -13,10 +13,10 @@ namespace SchoolAppToday
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SchoolAppTodayEntities : DbContext
+    public partial class SchoolAppEntities : DbContext
     {
-        public SchoolAppTodayEntities()
-            : base("name=SchoolAppTodayEntities")
+        public SchoolAppEntities()
+            : base("name=SchoolAppEntities")
         {
         }
     
@@ -31,6 +31,5 @@ namespace SchoolAppToday
         public virtual DbSet<Students> Students { get; set; }
         public virtual DbSet<Subjects> Subjects { get; set; }
         public virtual DbSet<Teachers> Teachers { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
     }
 }

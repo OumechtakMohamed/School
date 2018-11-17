@@ -1,4 +1,4 @@
-﻿CREATE TABLE [SchoolAppToday].[dbo].[Ass_Classe_Subject]
+﻿CREATE TABLE [SchoolApp].[dbo].[Ass_Classe_Subject]
     (
       Id int NOT NULL
              IDENTITY(1, 1) primary key,

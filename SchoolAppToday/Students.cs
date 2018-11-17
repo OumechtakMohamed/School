@@ -18,10 +18,9 @@ namespace SchoolAppToday
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Nullable<int> Age { get; set; }
-        public int User_Id { get; set; }
         public string Classe_Code { get; set; }
+        public int User_Id { get; set; }
     
         public virtual Classes Classes { get; set; }
-        public virtual Users Users { get; set; }
     }
 }
