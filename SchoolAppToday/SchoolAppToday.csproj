@@ -228,7 +228,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\Tables\InsertUserRoles.sql" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -236,19 +235,17 @@
     </Content>
     <Content Include="Database\Tables\Students.sql" />
     <Content Include="Database\Tables\Teachers.sql" />
-    <Content Include="Database\Tables\Users.sql" />
     <Content Include="Database\Tables\Subjects.sql" />
     <Content Include="Database\Tables\Classes.sql" />
     <Content Include="Database\Tables\Ass_Classe_Subject.sql" />
     <Content Include="Database\Tables\Ass_Prof_Classe.sql" />
-    <EntityDeploy Include="SchoolToday.edmx">
+    <EntityDeploy Include="SchoolApp.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SchoolToday.Designer.cs</LastGenOutput>
+      <LastGenOutput>SchoolApp.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="SchoolToday.edmx.diagram">
-      <DependentUpon>SchoolToday.edmx</DependentUpon>
+    <Content Include="SchoolApp.edmx.diagram">
+      <DependentUpon>SchoolApp.edmx</DependentUpon>
     </Content>
-    <None Include="Properties\PublishProfiles\SchoolAppTodayAPI.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -257,15 +254,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SchoolToday.Context.tt">
+    <Content Include="SchoolApp.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SchoolToday.edmx</DependentUpon>
-      <LastGenOutput>SchoolToday.Context.cs</LastGenOutput>
+      <DependentUpon>SchoolApp.edmx</DependentUpon>
+      <LastGenOutput>SchoolApp.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="SchoolToday.tt">
+    <Content Include="SchoolApp.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SchoolToday.edmx</DependentUpon>
-      <LastGenOutput>SchoolToday.cs</LastGenOutput>
+      <DependentUpon>SchoolApp.edmx</DependentUpon>
+      <LastGenOutput>SchoolApp.cs</LastGenOutput>
     </Content>
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
@@ -276,14 +273,14 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Ass_Classe_Subject.cs">
-      <DependentUpon>SchoolToday.tt</DependentUpon>
+      <DependentUpon>SchoolApp.tt</DependentUpon>
     </Compile>
     <Compile Include="Ass_Prof_Classe.cs">
-      <DependentUpon>SchoolToday.tt</DependentUpon>
+      <DependentUpon>SchoolApp.tt</DependentUpon>
     </Compile>
     <Compile Include="AuthorizeAttribute.cs" />
     <Compile Include="Classes.cs">
-      <DependentUpon>SchoolToday.tt</DependentUpon>
+      <DependentUpon>SchoolApp.tt</DependentUpon>
     </Compile>
     <Compile Include="Configuration\SchoolAppTodayAPIConfig.cs" />
     <Compile Include="Controller\AccountController.cs" />
@@ -292,7 +289,6 @@
     <Compile Include="Controller\StudentController.cs" />
     <Compile Include="Controller\SubjectController.cs" />
     <Compile Include="Controller\TeacherController.cs" />
-    <Compile Include="Controller\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -301,7 +297,6 @@
     <Compile Include="Manager\StudentManager.cs" />
     <Compile Include="Manager\SubjectManager.cs" />
     <Compile Include="Manager\TeacherManager.cs" />
-    <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Migrations\201811131903439_InitialDB.cs" />
     <Compile Include="Migrations\201811131903439_InitialDB.Designer.cs">
       <DependentUpon>201811131903439_InitialDB.cs</DependentUpon>
@@ -318,33 +313,30 @@
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SchoolToday.Context.cs">
+    <Compile Include="SchoolApp.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SchoolToday.Context.tt</DependentUpon>
+      <DependentUpon>SchoolApp.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="SchoolToday.cs">
+    <Compile Include="SchoolApp.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SchoolToday.tt</DependentUpon>
+      <DependentUpon>SchoolApp.tt</DependentUpon>
     </Compile>
-    <Compile Include="SchoolToday.Designer.cs">
+    <Compile Include="SchoolApp.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SchoolToday.edmx</DependentUpon>
+      <DependentUpon>SchoolApp.edmx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Students.cs">
-      <DependentUpon>SchoolToday.tt</DependentUpon>
+      <DependentUpon>SchoolApp.tt</DependentUpon>
     </Compile>
     <Compile Include="Subjects.cs">
-      <DependentUpon>SchoolToday.tt</DependentUpon>
+      <DependentUpon>SchoolApp.tt</DependentUpon>
     </Compile>
     <Compile Include="Teachers.cs">
-      <DependentUpon>SchoolToday.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Users.cs">
-      <DependentUpon>SchoolToday.tt</DependentUpon>
+      <DependentUpon>SchoolApp.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -360,6 +352,9 @@
     <EmbeddedResource Include="Migrations\201811131913584_AddProperties.resx">
       <DependentUpon>201811131913584_AddProperties.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

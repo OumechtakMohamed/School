@@ -70,10 +70,8 @@ namespace SchoolAppToday.Controller
         [HttpPost]
         public IHttpActionResult CreateSudent([FromBody]Students stud)
         {
-            int use_id = studentManager.CreateStudentIntoUserDB(stud);
-            if (stud != null && use_id != -1)
+            if (stud != null)
             {
-                stud.User_Id = use_id;
                 if (studentManager.CreateStudentIntoDB(stud))
                 { return Ok(); }
                 else return BadRequest("Not a valid student to create");

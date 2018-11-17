@@ -88,10 +88,8 @@ namespace SchoolAppToday.Controller
         [HttpPost]
         public IHttpActionResult CreateTeacher([FromBody]Teachers teach)
         {
-            int use_id = teacherManager.CreateTeacherIntoUserDB(teach);
-            if (teach != null && use_id != -1)
+            if (teach != null)
             {
-                teach.User_Id = use_id;
                 if (teacherManager.CreateTeacherIntoDB(teach))
                 { return Ok(); }
                 else return BadRequest("Not a valid teacher to create");

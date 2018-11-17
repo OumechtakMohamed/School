@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\X1\Documents\Visual Studio 2015\Projects\SchoolAppToday\SchoolAppToday\SchoolToday.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\X1\Source\Repos\School\SchoolAppToday\SchoolApp.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

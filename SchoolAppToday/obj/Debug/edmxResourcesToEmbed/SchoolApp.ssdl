@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="SchoolAppTodayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="SchoolAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Ass_Classe_Subject">
     <Key>
       <PropertyRef Name="Id" />
@@ -31,8 +31,8 @@
     <Property Name="FirstName" Type="varchar" MaxLength="50" />
     <Property Name="LastName" Type="varchar" MaxLength="50" />
     <Property Name="Age" Type="int" />
-    <Property Name="User_Id" Type="int" Nullable="false" />
     <Property Name="Classe_Code" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Subjects">
     <Key>
@@ -40,16 +40,6 @@
     </Key>
     <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="Label" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Teachers">
     <Key>
@@ -59,16 +49,8 @@
     <Property Name="FirstName" Type="varchar" MaxLength="50" />
     <Property Name="LastName" Type="varchar" MaxLength="50" />
     <Property Name="Age" Type="int" />
-    <Property Name="User_Id" Type="int" Nullable="false" />
     <Property Name="Subject_Code" Type="varchar" MaxLength="20" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Users">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Password" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="fk_Ass_Classe">
     <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
@@ -130,18 +112,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_Student_Users">
-    <End Role="Users" Type="Self.Users" Multiplicity="1" />
-    <End Role="Students" Type="Self.Students" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Students">
-        <PropertyRef Name="User_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fk_Teacher_Subject">
     <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
     <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
@@ -154,27 +124,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_Teacher_Users">
-    <End Role="Users" Type="Self.Users" Multiplicity="1" />
-    <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Teachers">
-        <PropertyRef Name="User_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="SchoolAppTodayModelStoreContainer">
+  <EntityContainer Name="SchoolAppModelStoreContainer">
     <EntitySet Name="Ass_Classe_Subject" EntityType="Self.Ass_Classe_Subject" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ass_Prof_Classe" EntityType="Self.Ass_Prof_Classe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="fk_Ass_Classe" Association="Self.fk_Ass_Classe">
       <End Role="Classes" EntitySet="Classes" />
       <End Role="Ass_Classe_Subject" EntitySet="Ass_Classe_Subject" />
@@ -195,16 +151,8 @@
       <End Role="Classes" EntitySet="Classes" />
       <End Role="Students" EntitySet="Students" />
     </AssociationSet>
-    <AssociationSet Name="fk_Student_Users" Association="Self.fk_Student_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Students" EntitySet="Students" />
-    </AssociationSet>
     <AssociationSet Name="fk_Teacher_Subject" Association="Self.fk_Teacher_Subject">
       <End Role="Subjects" EntitySet="Subjects" />
-      <End Role="Teachers" EntitySet="Teachers" />
-    </AssociationSet>
-    <AssociationSet Name="fk_Teacher_Users" Association="Self.fk_Teacher_Users">
-      <End Role="Users" EntitySet="Users" />
       <End Role="Teachers" EntitySet="Teachers" />
     </AssociationSet>
   </EntityContainer>
