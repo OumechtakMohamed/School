@@ -30,6 +30,8 @@ namespace SchoolAppToday.Controller
             {
                 RequiredLength = 3
             };
+            IdentityResult result = manager.Create(user, model.Password);
+            manager.AddToRole(user.Id, model.Role);
             if(!string.IsNullOrEmpty(model.Class_Code))
             {
                 Students s = new Students();
@@ -44,8 +46,6 @@ namespace SchoolAppToday.Controller
                 t.Subject_Code = model.Subject_Code;
                 teacherManager.CreateTeacherIntoDB(t);
             }
-            IdentityResult result = manager.Create(user, model.Password);
-            manager.AddToRole(user.Id, model.Role);
             return result;
         }
 
