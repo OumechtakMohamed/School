@@ -5,11 +5,12 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {User} from '../../models/user.model';
 import { HttpModule } from '@angular/http';
+import { environment } from 'src/app/config/environment';
 
 @Injectable()
 
 export class UserService {
-  readonly rootUrl = 'http://localhost:47475';
+  readonly rootUrl = environment.baseUrl;
   constructor(private http: HttpClient) { }
 
   registerUser(user : User, role : string, classe : string, subject : string){

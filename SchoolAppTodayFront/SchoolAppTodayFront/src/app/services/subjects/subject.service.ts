@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { environment } from 'src/app/config/environment';
 
 
 @Injectable({
@@ -7,7 +8,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class SubjectService {
 
-  readonly rootUrl = 'http://localhost:47475';
+  readonly rootUrl = environment.baseUrl;
   constructor(private http: HttpClient) { }
 
   getAllSubjects(){
