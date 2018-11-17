@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Response} from '@angular/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {User} from './user.model';
+import {User} from '../../models/user.model';
 import { HttpModule } from '@angular/http';
 
 @Injectable()
@@ -38,7 +38,7 @@ export class UserService {
 
    getAllRoles(){
 	   var reqHeader = new HttpHeaders({'No-Auth':'True'});
-	   return this.http.get(this.rootUrl+ '/api/GetAllRoles', {headers: reqHeader});
+	   return this.http.get(this.rootUrl+ '/api/GetAllRoles', {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})});
    }
 
    roleMatch(allowedRoles) : boolean {
