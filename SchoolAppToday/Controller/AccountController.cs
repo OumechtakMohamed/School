@@ -28,6 +28,7 @@ namespace SchoolAppToday.Controller
                 RequiredLength = 3
             };
             IdentityResult result = manager.Create(user, model.Password);
+            manager.AddToRole(user.Id, model.Role);
             return result;
         }
 

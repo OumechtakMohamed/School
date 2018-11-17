@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6df1cc8e767a4aed864c06b37f3c7616" Name="Diagram1">
+        <EntityTypeShape EntityType="SchoolAppTodayModel.Ass_Classe_Subject" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolAppTodayModel.Ass_Prof_Classe" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolAppTodayModel.Classes" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolAppTodayModel.Students" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolAppTodayModel.Subjects" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolAppTodayModel.Teachers" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolAppTodayModel.Users" Width="1.5" PointX="3.75" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="SchoolAppTodayModel.fk_Ass_Classe" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolAppTodayModel.fk_Ass_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolAppTodayModel.fk_Asse_Classe" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolAppTodayModel.fk_Asse_Prof" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolAppTodayModel.fk_Student_Classe" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolAppTodayModel.fk_Student_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolAppTodayModel.fk_Teacher_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolAppTodayModel.fk_Teacher_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

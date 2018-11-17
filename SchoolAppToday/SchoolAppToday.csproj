@@ -248,6 +248,7 @@
     <Content Include="SchoolToday.edmx.diagram">
       <DependentUpon>SchoolToday.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\SchoolAppTodayAPI.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -280,12 +281,14 @@
     <Compile Include="Ass_Prof_Classe.cs">
       <DependentUpon>SchoolToday.tt</DependentUpon>
     </Compile>
+    <Compile Include="AuthorizeAttribute.cs" />
     <Compile Include="Classes.cs">
       <DependentUpon>SchoolToday.tt</DependentUpon>
     </Compile>
     <Compile Include="Configuration\SchoolAppTodayAPIConfig.cs" />
     <Compile Include="Controller\AccountController.cs" />
     <Compile Include="Controller\ClasseController.cs" />
+    <Compile Include="Controller\RoleController.cs" />
     <Compile Include="Controller\StudentController.cs" />
     <Compile Include="Controller\SubjectController.cs" />
     <Compile Include="Controller\TeacherController.cs" />
