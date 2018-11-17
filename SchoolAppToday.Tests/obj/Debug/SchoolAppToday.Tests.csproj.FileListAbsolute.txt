@@ -104,3 +104,5 @@ C:\Users\X1\Source\Repos\School\SchoolAppToday.Tests\bin\Debug\Microsoft.AspNet.
 C:\Users\X1\Source\Repos\School\SchoolAppToday.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
 C:\Users\X1\Source\Repos\School\SchoolAppToday.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\X1\Source\Repos\School\SchoolAppToday.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+C:\Users\X1\Source\Repos\School\SchoolAppToday.Tests\bin\Debug\System.Web.Http.Owin.dll
+C:\Users\X1\Source\Repos\School\SchoolAppToday.Tests\bin\Debug\System.Web.Http.Owin.xml

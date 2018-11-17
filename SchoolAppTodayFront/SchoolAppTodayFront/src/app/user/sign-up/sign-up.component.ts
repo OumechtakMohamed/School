@@ -11,11 +11,26 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SignUpComponent implements OnInit {
   user : User;
+  roles : any[];
+  radioSelected:any;
+
   constructor(private userService : UserService, private toastr: ToastrService){ }
 
   ngOnInit() {
-  	this.resetForm();
-  	  }
+    this.resetForm();
+    this.userService.getAllRoles().subscribe(
+      (data : any) => 
+      /*  {data.array.forEach(obj => 
+          obj.selected = false
+        );*/
+       { this.roles = data;
+        console.log("here the fetched data: "+data);
+      },
+        (error : any) => {
+          console.log("error on getting data from roles")
+        }
+    );
+  }
 
   resetForm(form? : NgForm){
      if(form != null)
@@ -27,10 +42,14 @@ export class SignUpComponent implements OnInit {
      	FirstName : '',
      	LastName : ''
      }
+     if(this.roles){
+       this.roles.map(x => x.selected = false);
+     }
   }
 
   OnSubmit(form : NgForm){
-   this.userService.registerUser(form.value)
+   var x = this.roles.filter(x => x.Id == this.radioSelected).map(y => y.Name);
+   this.userService.registerUser(form.value,x.toString())
    .subscribe((data:any) => {
      if(data.Succeeded == true)
      	{this.resetForm(form);
@@ -40,5 +59,4 @@ export class SignUpComponent implements OnInit {
     	this.toastr.error(data.Errors[0]);
    });
   }
-
 }
