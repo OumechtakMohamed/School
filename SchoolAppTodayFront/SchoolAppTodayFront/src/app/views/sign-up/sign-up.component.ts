@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../shared/user.model';
+import { User } from '../../models/user.model';
 import {NgForm} from '@angular/forms';
-import {UserService} from '../../shared/user.service';
+import {UserService} from '../../services/users/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { ClasseService } from 'src/app/services/classes/classe.service';
 import { SubjectService } from 'src/app/services/subjects/subject.service';
@@ -12,6 +12,7 @@ import { SubjectService } from 'src/app/services/subjects/subject.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  title = 'Create User:';
   user : User;
   roles : any[];
   classes : any[];

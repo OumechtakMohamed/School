@@ -11,6 +11,6 @@ export class ClasseService {
 
   getAllClasses(){
     var reqHeader = new HttpHeaders({'No-Auth':'True'});
-    return this.http.get(this.rootUrl+ '/api/classes', {headers: reqHeader});
+    return this.http.get(this.rootUrl+ '/api/classes', {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})});
   }
 }

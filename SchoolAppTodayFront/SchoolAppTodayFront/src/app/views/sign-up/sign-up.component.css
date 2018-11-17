@@ -12,3 +12,10 @@ label{
     position: relative; 
     opacity: 1; 
 }
+
+button{
+    width: 50%;
+    text-align: center;
+    margin:0 auto;
+    margin-left: 25%;
+}

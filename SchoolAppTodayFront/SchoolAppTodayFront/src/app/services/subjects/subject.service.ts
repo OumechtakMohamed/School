@@ -12,6 +12,6 @@ export class SubjectService {
 
   getAllSubjects(){
     var reqHeader = new HttpHeaders({'No-Auth':'True'});
-    return this.http.get(this.rootUrl+ '/api/subjects', {headers: reqHeader});
+    return this.http.get(this.rootUrl+ '/api/subjects', {headers : new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})});
   }
 }

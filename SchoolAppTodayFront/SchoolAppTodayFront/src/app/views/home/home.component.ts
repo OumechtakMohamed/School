@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../shared/user.service';
+import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +9,7 @@ import { UserService } from '../shared/user.service';
 })
 export class HomeComponent implements OnInit {
   userClaims : any;
+  today: number = Date.now();
 
   constructor(private router : Router, private userService: UserService) { }
 

@@ -1,32 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {UserService} from './shared/user.service';
+import {UserService} from './services/users/user.service';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { SignUpComponent } from './user/sign-up/sign-up.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
-import { UserComponent } from './user/user.component';
-import { SignInComponent } from './user/sign-in/sign-in.component';
-import { HomeComponent } from './home/home.component';
-import { appRoutes } from './routes';
-import { AuthGuard } from './auth/auth.guard';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component';
-import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { appRoutes } from './config/routes';
 import { ClasseService } from './services/classes/classe.service';
+import { ForbiddenComponent } from './shared/forbidden/forbidden.component';
+import { AuthGuard } from './resolvers/auth/auth.guard';
+import { HomeComponent } from './views/home/home.component';
+import { SignInComponent } from './views/sign-in/sign-in.component';
+import { SignUpComponent } from './views/sign-up/sign-up.component';
+import { UserComponent } from './views/user/user.component';
+import { ProfileComponent } from './views/profile/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignUpComponent,
-    UserComponent,
     SignInComponent,
+    UserComponent,
+    SignUpComponent,
     HomeComponent,
-    AdminPanelComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
