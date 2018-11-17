@@ -16,6 +16,11 @@ export class HomeComponent implements OnInit {
     this.userService.getUserClaims().subscribe((data : any) => {
       this.userClaims = data;
     })
+
+    if(this.userService.roleMatch(['Author']))
+    {
+      //
+    }
   }
 
   Logout(){

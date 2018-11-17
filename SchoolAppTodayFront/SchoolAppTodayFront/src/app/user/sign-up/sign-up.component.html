@@ -21,10 +21,33 @@
     <label>LastName</label>
     </div>
 </div>
+
+<div class="row">
+        <div class="col s6">
+                <label>Role:</label>
+                <div *ngFor="let enum of roles">
+                <label for="enum_role_{{enum.Name}}">
+                    <input id="enum_role_{{enum.Name}}" [value]='enum.Id' type="radio" name="enums" [(ngModel)]="radioSelected">
+                    {{enum.Name}}
+                </label>
+                </div>
+        </div>
+        <div class="col s6">
+                <label *ngIf="radioSelected == '3'">Classe:</label>
+                <p *ngIf="radioSelected == '3'">
+                        Select classe
+                </p>
+                <label *ngIf="radioSelected == '2'">Subject:</label>
+                <p *ngIf="radioSelected == '2'">
+                        Select subject
+                </p>
+        </div>
+</div>
+
+
 <div class="row">
         <div class="input-field col s12">
     <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit">Submit</button>
     </div>
 </div> 
 </form>
-
