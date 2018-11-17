@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc7bd30c275944408765f70dbdfa2b50" Name="Diagram1">
+        <EntityTypeShape EntityType="SchoolAppModel.Ass_Classe_Subject" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolAppModel.Ass_Prof_Classe" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolAppModel.Classes" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolAppModel.Students" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolAppModel.Subjects" Width="1.5" PointX="1.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolAppModel.Teachers" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="SchoolAppModel.fk_Ass_Classe" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolAppModel.fk_Ass_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolAppModel.fk_Asse_Classe" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolAppModel.fk_Asse_Prof" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolAppModel.fk_Student_Classe" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolAppModel.fk_Teacher_Subject" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

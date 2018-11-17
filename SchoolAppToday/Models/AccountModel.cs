@@ -13,7 +13,8 @@ namespace SchoolAppToday.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string LoggedOn { get; set; }
-
         public string Role { get; set; }
+        public string Class_Code { get; set; }
+        public string Subject_Code { get; set; }
     }
 }

@@ -22,6 +22,7 @@ namespace SchoolAppToday.Controller
         /// <response code="200"></response>
         [Route("api/classes")]
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<Classes> GetClasses()
         {
             return classeManager.GetClassesFromDB();

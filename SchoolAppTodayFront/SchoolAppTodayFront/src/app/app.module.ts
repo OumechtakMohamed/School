@@ -16,6 +16,7 @@ import { appRoutes } from './routes';
 import { AuthGuard } from './auth/auth.guard';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { ClasseService } from './services/classes/classe.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UserService, AuthGuard],
+  providers: [UserService, AuthGuard, ClasseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

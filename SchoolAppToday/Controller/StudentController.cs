@@ -58,28 +58,6 @@ namespace SchoolAppToday.Controller
             else return BadRequest("Not a valid student id");
         }
 
-        /// <summary>
-        /// create a student
-        /// </summary>
-        /// <remarks>
-        /// create student
-        /// </remarks>
-        /// <returns></returns>
-        /// <response code="200"></response>
-        [Route("api/student/create")]
-        [HttpPost]
-        public IHttpActionResult CreateSudent([FromBody]Students stud)
-        {
-            int use_id = studentManager.CreateStudentIntoUserDB(stud);
-            if (stud != null && use_id != -1)
-            {
-                stud.User_Id = use_id;
-                if (studentManager.CreateStudentIntoDB(stud))
-                { return Ok(); }
-                else return BadRequest("Not a valid student to create");
-            }
-            else return BadRequest("Student exist already"); 
-        }
 
         /// <summary>
         /// Update student

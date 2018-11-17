@@ -22,6 +22,7 @@ namespace SchoolAppToday.Controller
         /// <response code="200"></response>
         [Route("api/subjects")]
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<Subjects> GetSubjects()
         {
             return subjectManager.GetSubjectsFromDB();

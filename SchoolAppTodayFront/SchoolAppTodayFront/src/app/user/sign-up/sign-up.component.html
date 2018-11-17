@@ -27,20 +27,24 @@
                 <label>Role:</label>
                 <div *ngFor="let enum of roles">
                 <label for="enum_role_{{enum.Name}}">
-                    <input id="enum_role_{{enum.Name}}" [value]='enum.Id' type="radio" name="enums" [(ngModel)]="radioSelected">
+                    <input id="enum_role_{{enum.Name}}" [value]='enum.Id' type="radio" name="enums" [(ngModel)]="radioSelected" (change)="handleChange(radioSelected)">
                     {{enum.Name}}
                 </label>
                 </div>
         </div>
         <div class="col s6">
-                <label *ngIf="radioSelected == '3'">Classe:</label>
-                <p *ngIf="radioSelected == '3'">
-                        Select classe
-                </p>
-                <label *ngIf="radioSelected == '2'">Subject:</label>
-                <p *ngIf="radioSelected == '2'">
-                        Select subject
-                </p>
+                <div class="classes" *ngIf="radioSelected == '3'">
+                        <label>Classe:</label>
+                        <select name="classeSelect" [(ngModel)]="classValue">
+                                <option *ngFor="let enum of classes" [ngValue]="enum.Code">{{enum.Label}}</option>
+                        </select>
+                </div>
+                <div class="subjects" *ngIf="radioSelected == '2'">
+                        <label>Subject:</label>
+                        <select name="subjectSelect" [(ngModel)]="subjectValue">
+                                <option *ngFor="let enum of subjects" [ngValue]="enum.Code">{{enum.Label}}</option>
+                        </select>
+                </div>
         </div>
 </div>
 

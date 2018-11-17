@@ -12,14 +12,16 @@ export class UserService {
   readonly rootUrl = 'http://localhost:47475';
   constructor(private http: HttpClient) { }
 
-  registerUser(user : User, role : string){
+  registerUser(user : User, role : string, classe : string, subject : string){
   	const body = {
   		UserName : user.UserName,
   		Password : user.Password,
   		Email : user.Email,
   		FirstName : user.FirstName,
 		LastName : user.LastName,
-		Role : role
+		Role : role,
+		Class_Code : classe,
+		Subject_Code : subject
   	}
   	return this.http.post(this.rootUrl + '/api/User/Register', body);
   }

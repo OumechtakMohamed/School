@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using SchoolAppToday.Manager;
 using SchoolAppToday.Models;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,8 @@ namespace SchoolAppToday.Controller
         {
             var userStore = new UserStore<ApplicationUser>(new ApplicationDbContext());
             var manager = new UserManager<ApplicationUser>(userStore);
+            var studentManager = new StudentManager();
+            var teacherManager = new TeacherManager();
             var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
@@ -27,6 +30,20 @@ namespace SchoolAppToday.Controller
             {
                 RequiredLength = 3
             };
+            if(!string.IsNullOrEmpty(model.Class_Code))
+            {
+                Students s = new Students();
+                s.User_Id = user.Id;
+                s.Classe_Code = model.Class_Code;
+                studentManager.CreateStudentIntoDB(s);
+            }
+            if(!string.IsNullOrEmpty(model.Subject_Code))
+            {
+                Teachers t = new Teachers();
+                t.User_Id = user.Id;
+                t.Subject_Code = model.Subject_Code;
+                teacherManager.CreateTeacherIntoDB(t);
+            }
             IdentityResult result = manager.Create(user, model.Password);
             manager.AddToRole(user.Id, model.Role);
             return result;

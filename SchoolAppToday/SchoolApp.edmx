@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SchoolAppTodayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SchoolAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Ass_Classe_Subject">
           <Key>
             <PropertyRef Name="Id" />
@@ -33,11 +33,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="50" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" />
-          <Property Name="Age" Type="int" />
-          <Property Name="User_Id" Type="int" Nullable="false" />
           <Property Name="Classe_Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="User_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="Subjects">
           <Key>
@@ -51,19 +48,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="50" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" />
-          <Property Name="Age" Type="int" />
-          <Property Name="User_Id" Type="int" Nullable="false" />
           <Property Name="Subject_Code" Type="varchar" MaxLength="20" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="User_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <Association Name="fk_Ass_Classe">
           <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
@@ -125,18 +111,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Student_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Students" Type="Self.Students" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Students">
-              <PropertyRef Name="User_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_Teacher_Subject">
           <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
           <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
@@ -149,26 +123,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Teacher_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Teachers">
-              <PropertyRef Name="User_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="SchoolAppTodayModelStoreContainer">
+        <EntityContainer Name="SchoolAppModelStoreContainer">
           <EntitySet Name="Ass_Classe_Subject" EntityType="Self.Ass_Classe_Subject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ass_Prof_Classe" EntityType="Self.Ass_Prof_Classe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_Ass_Classe" Association="Self.fk_Ass_Classe">
             <End Role="Classes" EntitySet="Classes" />
             <End Role="Ass_Classe_Subject" EntitySet="Ass_Classe_Subject" />
@@ -189,16 +150,8 @@
             <End Role="Classes" EntitySet="Classes" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
-          <AssociationSet Name="fk_Student_Users" Association="Self.fk_Student_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Students" EntitySet="Students" />
-          </AssociationSet>
           <AssociationSet Name="fk_Teacher_Subject" Association="Self.fk_Teacher_Subject">
             <End Role="Subjects" EntitySet="Subjects" />
-            <End Role="Teachers" EntitySet="Teachers" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Teacher_Users" Association="Self.fk_Teacher_Users">
-            <End Role="Users" EntitySet="Users" />
             <End Role="Teachers" EntitySet="Teachers" />
           </AssociationSet>
         </EntityContainer>
@@ -206,7 +159,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SchoolAppTodayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="SchoolAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Ass_Classe_Subject">
           <Key>
             <PropertyRef Name="Id" />
@@ -242,13 +195,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Age" Type="Int32" />
-          <Property Name="User_Id" Type="Int32" Nullable="false" />
           <Property Name="Classe_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Classes" Relationship="Self.fk_Student_Classe" FromRole="Students" ToRole="Classes" />
-          <NavigationProperty Name="Users" Relationship="Self.fk_Student_Users" FromRole="Students" ToRole="Users" />
         </EntityType>
         <EntityType Name="Subjects">
           <Key>
@@ -264,24 +213,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Age" Type="Int32" />
-          <Property Name="User_Id" Type="Int32" Nullable="false" />
           <Property Name="Subject_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Ass_Prof_Classe" Relationship="Self.fk_Asse_Prof" FromRole="Teachers" ToRole="Ass_Prof_Classe" />
           <NavigationProperty Name="Subjects" Relationship="Self.fk_Teacher_Subject" FromRole="Teachers" ToRole="Subjects" />
-          <NavigationProperty Name="Users" Relationship="Self.fk_Teacher_Users" FromRole="Teachers" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Students" Relationship="Self.fk_Student_Users" FromRole="Users" ToRole="Students" />
-          <NavigationProperty Name="Teachers" Relationship="Self.fk_Teacher_Users" FromRole="Users" ToRole="Teachers" />
         </EntityType>
         <Association Name="fk_Ass_Classe">
           <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
@@ -343,18 +278,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Student_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Students" Type="Self.Students" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Students">
-              <PropertyRef Name="User_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_Teacher_Subject">
           <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
           <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
@@ -367,26 +290,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Teacher_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Teachers">
-              <PropertyRef Name="User_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="SchoolAppTodayEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SchoolAppTEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Ass_Classe_Subject" EntityType="Self.Ass_Classe_Subject" />
           <EntitySet Name="Ass_Prof_Classe" EntityType="Self.Ass_Prof_Classe" />
           <EntitySet Name="Classes" EntityType="Self.Classes" />
           <EntitySet Name="Students" EntityType="Self.Students" />
           <EntitySet Name="Subjects" EntityType="Self.Subjects" />
           <EntitySet Name="Teachers" EntityType="Self.Teachers" />
-          <EntitySet Name="Users" EntityType="Self.Users" />
           <AssociationSet Name="fk_Ass_Classe" Association="Self.fk_Ass_Classe">
             <End Role="Classes" EntitySet="Classes" />
             <End Role="Ass_Classe_Subject" EntitySet="Ass_Classe_Subject" />
@@ -407,16 +317,8 @@
             <End Role="Classes" EntitySet="Classes" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
-          <AssociationSet Name="fk_Student_Users" Association="Self.fk_Student_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Students" EntitySet="Students" />
-          </AssociationSet>
           <AssociationSet Name="fk_Teacher_Subject" Association="Self.fk_Teacher_Subject">
             <End Role="Subjects" EntitySet="Subjects" />
-            <End Role="Teachers" EntitySet="Teachers" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Teacher_Users" Association="Self.fk_Teacher_Users">
-            <End Role="Users" EntitySet="Users" />
             <End Role="Teachers" EntitySet="Teachers" />
           </AssociationSet>
         </EntityContainer>
@@ -425,9 +327,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SchoolAppTodayModelStoreContainer" CdmEntityContainer="SchoolAppTodayEntities">
+        <EntityContainerMapping StorageEntityContainer="SchoolAppModelStoreContainer" CdmEntityContainer="SchoolAppTEntities">
           <EntitySetMapping Name="Ass_Classe_Subject">
-            <EntityTypeMapping TypeName="SchoolAppTodayModel.Ass_Classe_Subject">
+            <EntityTypeMapping TypeName="SchoolAppModel.Ass_Classe_Subject">
               <MappingFragment StoreEntitySet="Ass_Classe_Subject">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ClasseCode" ColumnName="ClasseCode" />
@@ -436,7 +338,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ass_Prof_Classe">
-            <EntityTypeMapping TypeName="SchoolAppTodayModel.Ass_Prof_Classe">
+            <EntityTypeMapping TypeName="SchoolAppModel.Ass_Prof_Classe">
               <MappingFragment StoreEntitySet="Ass_Prof_Classe">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Prof_Id" ColumnName="Prof_Id" />
@@ -445,7 +347,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Classes">
-            <EntityTypeMapping TypeName="SchoolAppTodayModel.Classes">
+            <EntityTypeMapping TypeName="SchoolAppModel.Classes">
               <MappingFragment StoreEntitySet="Classes">
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Label" ColumnName="Label" />
@@ -453,19 +355,16 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Students">
-            <EntityTypeMapping TypeName="SchoolAppTodayModel.Students">
+            <EntityTypeMapping TypeName="SchoolAppModel.Students">
               <MappingFragment StoreEntitySet="Students">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
                 <ScalarProperty Name="Classe_Code" ColumnName="Classe_Code" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Subjects">
-            <EntityTypeMapping TypeName="SchoolAppTodayModel.Subjects">
+            <EntityTypeMapping TypeName="SchoolAppModel.Subjects">
               <MappingFragment StoreEntitySet="Subjects">
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Label" ColumnName="Label" />
@@ -473,23 +372,11 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Teachers">
-            <EntityTypeMapping TypeName="SchoolAppTodayModel.Teachers">
+            <EntityTypeMapping TypeName="SchoolAppModel.Teachers">
               <MappingFragment StoreEntitySet="Teachers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
                 <ScalarProperty Name="Subject_Code" ColumnName="Subject_Code" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="SchoolAppTodayModel.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
