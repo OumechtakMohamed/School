@@ -35,6 +35,7 @@ namespace SchoolAppToday
           
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+            identity.AddClaim(new Claim("Id", user.Id));
             identity.AddClaim(new Claim("Username", context.UserName));
             identity.AddClaim(new Claim("Email", user.Email));
             identity.AddClaim(new Claim("FirstName", user.FirstName));

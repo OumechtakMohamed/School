@@ -47,6 +47,7 @@
     <EntitySetMapping Name="Teachers">
       <EntityTypeMapping TypeName="SchoolAppModel.Teachers">
         <MappingFragment StoreEntitySet="Teachers">
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Subject_Code" ColumnName="Subject_Code" />
           <ScalarProperty Name="User_Id" ColumnName="User_Id" />

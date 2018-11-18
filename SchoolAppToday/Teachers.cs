@@ -9,9 +9,10 @@
 
 namespace SchoolAppToday
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Teachers
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,9 +24,12 @@ namespace SchoolAppToday
         public int Id { get; set; }
         public string Subject_Code { get; set; }
         public string User_Id { get; set; }
+        public string FullName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<Ass_Prof_Classe> Ass_Prof_Classe { get; set; }
+        [JsonIgnore]
         public virtual Subjects Subjects { get; set; }
     }
 }

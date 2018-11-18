@@ -44,6 +44,7 @@ namespace SchoolAppToday.Controller
                 Teachers t = new Teachers();
                 t.User_Id = user.Id;
                 t.Subject_Code = model.Subject_Code;
+                t.FullName = user.FirstName + ' ' + user.LastName;
                 teacherManager.CreateTeacherIntoDB(t);
             }
             return result;

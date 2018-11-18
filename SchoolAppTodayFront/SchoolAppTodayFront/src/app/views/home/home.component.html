@@ -4,6 +4,9 @@
           <li *ngIf="userService.roleMatch(['Admin'])">
                 <a routerLink="/signup" routerLinkActive='active'>Create User</a>
           </li>
+          <li *ngIf="userService.roleMatch(['Student'])">
+            <a routerLink="/mystudent" routerLinkActive='active'>My Data</a>
+      </li>
         </ul>
       <a class="brand-logo center">
         <i class="material-icons">cloud</i>AppSchool</a>

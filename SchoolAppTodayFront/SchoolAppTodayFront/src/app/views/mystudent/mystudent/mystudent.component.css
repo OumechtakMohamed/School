@@ -1,0 +1,13 @@
+label{
+    font-size : 15px;
+}
+
+.dataTable{
+    margin: 0 auto;
+    margin-top : 12%;
+    width: 70%;
+}
+
+.dataTable th,td{
+    text-align: center;
+}

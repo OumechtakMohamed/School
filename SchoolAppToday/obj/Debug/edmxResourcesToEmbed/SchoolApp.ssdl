@@ -45,6 +45,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Subject_Code" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="User_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar(max)" />
   </EntityType>
   <Association Name="fk_Ass_Classe">
     <End Role="Classes" Type="Self.Classes" Multiplicity="1" />

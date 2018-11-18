@@ -57,6 +57,7 @@
     <Property Name="User_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Ass_Prof_Classe" Relationship="Self.fk_Asse_Prof" FromRole="Teachers" ToRole="Ass_Prof_Classe" />
     <NavigationProperty Name="Subjects" Relationship="Self.fk_Teacher_Subject" FromRole="Teachers" ToRole="Subjects" />
+    <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="fk_Ass_Classe">
     <End Role="Classes" Type="Self.Classes" Multiplicity="1" />

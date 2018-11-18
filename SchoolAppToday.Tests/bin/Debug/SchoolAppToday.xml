@@ -94,7 +94,7 @@
             <returns></returns>
             <response code="200"></response>
         </member>
-        <member name="M:SchoolAppToday.Controller.StudentController.GetStudent(System.Int32)">
+        <member name="M:SchoolAppToday.Controller.StudentController.GetStudent">
             <summary>
             Get student
             </summary>

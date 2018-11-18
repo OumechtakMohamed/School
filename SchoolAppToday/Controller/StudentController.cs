@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 using SchoolAppToday.Manager;
+using SchoolAppToday.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,11 +35,12 @@ namespace SchoolAppToday.Controller
         /// </remarks>
         /// <returns></returns>
         /// <response code="200"></response>
-        [Route("api/student/{id}")]
+        [Route("api/StudentData")]
         [HttpGet]
-        public Students GetStudent(int id)
+        [Authorize(Roles = "Student")]
+        public StudentInfosModel GetStudent()
         {
-            return studentManager.GetStudentFromDB(id);
+            return studentManager.GetStudentDataFromDB();
         }
 
         /// <summary>

@@ -6,12 +6,16 @@ import { SignUpComponent } from '../views/sign-up/sign-up.component';
 import { SignInComponent } from '../views/sign-in/sign-in.component';
 import { UserComponent } from '../views/user/user.component';
 import { ProfileComponent } from '../views/profile/profile/profile.component';
+import { MystudentComponent } from '../views/mystudent/mystudent/mystudent.component';
 
 export const appRoutes : Routes = [
   {path : 'home', component : HomeComponent, canActivate: [AuthGuard],data : {roles : ['Admin']}},
   {path: 'forbidden', component : ForbiddenComponent, canActivate : [AuthGuard]},
   {path : 'signup',  component : HomeComponent,
   children : [{path : '', component : SignUpComponent}],canActivate: [AuthGuard],data : {roles : ['Admin']}
+  },
+  {path : 'mystudent',  component : HomeComponent,
+  children : [{path : '', component : MystudentComponent}],canActivate: [AuthGuard],data : {roles : ['Student']}
   },
   {path: 'profile', component : HomeComponent,
   children : [{path : '', component : ProfileComponent}],canActivate: [AuthGuard],data : {roles : ['Admin','Student','Teacher']}
