@@ -6,7 +6,10 @@
           </li>
           <li *ngIf="userService.roleMatch(['Student'])">
             <a routerLink="/mystudent" routerLinkActive='active'>My Data</a>
-      </li>
+          </li>
+          <li *ngIf="userService.roleMatch(['Teacher'])">
+            <a routerLink="/myteacher" routerLinkActive='active'>My Data</a>
+          </li>
         </ul>
       <a class="brand-logo center">
         <i class="material-icons">cloud</i>AppSchool</a>

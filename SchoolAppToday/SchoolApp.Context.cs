@@ -25,7 +25,6 @@ namespace SchoolAppToday
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Ass_Classe_Subject> Ass_Classe_Subject { get; set; }
         public virtual DbSet<Ass_Prof_Classe> Ass_Prof_Classe { get; set; }
         public virtual DbSet<Classes> Classes { get; set; }
         public virtual DbSet<Students> Students { get; set; }

@@ -34,16 +34,6 @@
             <returns></returns>
             <response code="200"></response>
         </member>
-        <member name="M:SchoolAppToday.Controller.ClasseController.GetClasseSubjects(System.String)">
-            <summary>
-            Get all subjects for a classe
-            </summary>
-            <remarks>
-            Get a list of subjects of a classe
-            </remarks>
-            <returns></returns>
-            <response code="200"></response>
-        </member>
         <member name="M:SchoolAppToday.Controller.ClasseController.Delete(System.String)">
             <summary>
             Delete a classe
@@ -70,16 +60,6 @@
             </summary>
             <remarks>
             Update a classe
-            </remarks>
-            <returns></returns>
-            <response code="200"></response>
-        </member>
-        <member name="M:SchoolAppToday.Controller.ClasseController.CreateClasseSubject(System.String,System.String)">
-            <summary>
-            Create a subject for a classe
-            </summary>
-            <remarks>
-            Create a subject for a classe
             </remarks>
             <returns></returns>
             <response code="200"></response>
@@ -144,16 +124,6 @@
             <returns></returns>
             <response code="200"></response>
         </member>
-        <member name="M:SchoolAppToday.Controller.SubjectController.GetSubjectClasses(System.String)">
-            <summary>
-            Get all classes of a subject
-            </summary>
-            <remarks>
-            Get a list of all subjects of a subject
-            </remarks>
-            <returns></returns>
-            <response code="200"></response>
-        </member>
         <member name="M:SchoolAppToday.Controller.SubjectController.Delete(System.String)">
             <summary>
             Delete a subejct
@@ -194,7 +164,7 @@
             <returns></returns>
             <response code="200"></response>
         </member>
-        <member name="M:SchoolAppToday.Controller.TeacherController.GetTeacher(System.Int32)">
+        <member name="M:SchoolAppToday.Controller.TeacherController.GetTeacher">
             <summary>
             Get a teacher by id
             </summary>

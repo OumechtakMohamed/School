@@ -54,15 +54,6 @@ namespace SchoolAppToday.Manager
             return teachers.ToList();
         }
 
-        public List<Subjects> GetClasseSubjectsFromDB(string code)
-        {
-            var subjects = (from a in db.Ass_Classe_Subject
-                            join c in db.Subjects on a.SubjectCode equals c.Code
-                            where a.ClasseCode == code
-                            select c);
-            return subjects.ToList();
-        }
-
         public bool CreateClasseIntoDB(Classes classe)
         {
             bool rep = false;
@@ -80,42 +71,9 @@ namespace SchoolAppToday.Manager
             return rep;
         }
 
-        public bool CreateClasseSubjectIntoDB(string ClasseCode, string subject)
-        {
-            bool rep = false;
-            Ass_Classe_Subject classe = new Ass_Classe_Subject();
-            classe.SubjectCode = subject;
-            classe.ClasseCode = ClasseCode;
-            var clas = db.Set<Ass_Classe_Subject>();
-            clas.Add(classe);
-            try
-            {
-                db.SaveChanges();
-                rep = true;
-            }
-            catch
-            {
-                rep = false;
-            }
-            return rep;
-        }
+      
 
-        public void removeClasseAssSubjectsFromDB(string code)
-        {
-            if (code != null)
-            {
-                db.Ass_Classe_Subject.RemoveRange(db.Ass_Classe_Subject.Where(s => s.ClasseCode == code));
-                db.SaveChanges();
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-            }
-        }
+      
 
 
         public bool UpdateClasseIntoDB(Classes classe)

@@ -18,6 +18,7 @@ import { SignUpComponent } from './views/sign-up/sign-up.component';
 import { UserComponent } from './views/user/user.component';
 import { ProfileComponent } from './views/profile/profile/profile.component';
 import { MystudentComponent } from './views/mystudent/mystudent/mystudent.component';
+import { MyteacherComponent } from './views/myteacher/myteacher/myteacher.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MystudentComponent } from './views/mystudent/mystudent/mystudent.compon
     HomeComponent,
     ForbiddenComponent,
     ProfileComponent,
-    MystudentComponent
+    MystudentComponent,
+    MyteacherComponent
   ],
   imports: [
     BrowserModule,

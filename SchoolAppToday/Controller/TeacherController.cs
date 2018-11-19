@@ -1,4 +1,5 @@
 ﻿using SchoolAppToday.Manager;
+using SchoolAppToday.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,11 +36,12 @@ namespace SchoolAppToday.Controller
         /// </remarks>
         /// <returns></returns>
         /// <response code="200"></response>
-        [Route("api/teacher/{id}")]
+        [Route("api/TeacherData")]
         [HttpGet]
-        public Teachers GetTeacher(int id)
+        [Authorize(Roles = "Teacher")]
+        public TeacherInfosModel GetTeacher()
         {
-            return teacherManager.GetTeacherFromDB(id);
+            return teacherManager.GetTeacherDataFromDB();
         }
 
         /// <summary>
