@@ -18,16 +18,12 @@ namespace SchoolAppToday
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Subjects()
         {
-            this.Ass_Classe_Subject = new HashSet<Ass_Classe_Subject>();
             this.Teachers = new HashSet<Teachers>();
         }
     
         public string Code { get; set; }
         public string Label { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
-        public virtual ICollection<Ass_Classe_Subject> Ass_Classe_Subject { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]
         public virtual ICollection<Teachers> Teachers { get; set; }

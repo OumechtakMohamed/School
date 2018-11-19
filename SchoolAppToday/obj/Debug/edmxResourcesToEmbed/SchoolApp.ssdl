@@ -1,13 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SchoolAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Ass_Classe_Subject">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ClasseCode" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="SubjectCode" Type="varchar" MaxLength="20" Nullable="false" />
-  </EntityType>
   <EntityType Name="Ass_Prof_Classe">
     <Key>
       <PropertyRef Name="Id" />
@@ -30,6 +22,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Classe_Code" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="User_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Subjects">
     <Key>
@@ -47,30 +40,6 @@
     <Property Name="User_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="FullName" Type="nvarchar(max)" />
   </EntityType>
-  <Association Name="fk_Ass_Classe">
-    <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
-    <End Role="Ass_Classe_Subject" Type="Self.Ass_Classe_Subject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Classes">
-        <PropertyRef Name="Code" />
-      </Principal>
-      <Dependent Role="Ass_Classe_Subject">
-        <PropertyRef Name="ClasseCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_Ass_Subject">
-    <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
-    <End Role="Ass_Classe_Subject" Type="Self.Ass_Classe_Subject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Subjects">
-        <PropertyRef Name="Code" />
-      </Principal>
-      <Dependent Role="Ass_Classe_Subject">
-        <PropertyRef Name="SubjectCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fk_Asse_Classe">
     <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
     <End Role="Ass_Prof_Classe" Type="Self.Ass_Prof_Classe" Multiplicity="*" />
@@ -120,20 +89,11 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="SchoolAppModelStoreContainer">
-    <EntitySet Name="Ass_Classe_Subject" EntityType="Self.Ass_Classe_Subject" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ass_Prof_Classe" EntityType="Self.Ass_Prof_Classe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="fk_Ass_Classe" Association="Self.fk_Ass_Classe">
-      <End Role="Classes" EntitySet="Classes" />
-      <End Role="Ass_Classe_Subject" EntitySet="Ass_Classe_Subject" />
-    </AssociationSet>
-    <AssociationSet Name="fk_Ass_Subject" Association="Self.fk_Ass_Subject">
-      <End Role="Subjects" EntitySet="Subjects" />
-      <End Role="Ass_Classe_Subject" EntitySet="Ass_Classe_Subject" />
-    </AssociationSet>
     <AssociationSet Name="fk_Asse_Classe" Association="Self.fk_Asse_Classe">
       <End Role="Classes" EntitySet="Classes" />
       <End Role="Ass_Prof_Classe" EntitySet="Ass_Prof_Classe" />

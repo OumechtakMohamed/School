@@ -18,15 +18,6 @@ namespace SchoolAppToday.Manager
                 return db.Subjects;
         }
 
-        public List<Classes> GetSubjectClassesFromDB(string code)
-        {
-            var classes = (from a in db.Ass_Classe_Subject
-                           join c in db.Classes on a.ClasseCode equals c.Code
-                           where a.SubjectCode == code
-                           select c);
-            return classes.ToList();
-        }
-
         public Subjects GetSubjectFromDB(string code)
         {
             return db.Subjects.Where(s => s.Code == code).FirstOrDefault();

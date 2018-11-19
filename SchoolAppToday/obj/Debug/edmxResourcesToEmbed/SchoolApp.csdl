@@ -1,15 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SchoolAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Ass_Classe_Subject">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ClasseCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="SubjectCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Classes" Relationship="Self.fk_Ass_Classe" FromRole="Ass_Classe_Subject" ToRole="Classes" />
-    <NavigationProperty Name="Subjects" Relationship="Self.fk_Ass_Subject" FromRole="Ass_Classe_Subject" ToRole="Subjects" />
-  </EntityType>
   <EntityType Name="Ass_Prof_Classe">
     <Key>
       <PropertyRef Name="Id" />
@@ -26,7 +16,6 @@
     </Key>
     <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Label" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Ass_Classe_Subject" Relationship="Self.fk_Ass_Classe" FromRole="Classes" ToRole="Ass_Classe_Subject" />
     <NavigationProperty Name="Ass_Prof_Classe" Relationship="Self.fk_Asse_Classe" FromRole="Classes" ToRole="Ass_Prof_Classe" />
     <NavigationProperty Name="Students" Relationship="Self.fk_Student_Classe" FromRole="Classes" ToRole="Students" />
   </EntityType>
@@ -38,6 +27,7 @@
     <Property Name="Classe_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="User_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Classes" Relationship="Self.fk_Student_Classe" FromRole="Students" ToRole="Classes" />
+    <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Subjects">
     <Key>
@@ -45,7 +35,6 @@
     </Key>
     <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Label" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Ass_Classe_Subject" Relationship="Self.fk_Ass_Subject" FromRole="Subjects" ToRole="Ass_Classe_Subject" />
     <NavigationProperty Name="Teachers" Relationship="Self.fk_Teacher_Subject" FromRole="Subjects" ToRole="Teachers" />
   </EntityType>
   <EntityType Name="Teachers">
@@ -59,30 +48,6 @@
     <NavigationProperty Name="Subjects" Relationship="Self.fk_Teacher_Subject" FromRole="Teachers" ToRole="Subjects" />
     <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
-  <Association Name="fk_Ass_Classe">
-    <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
-    <End Role="Ass_Classe_Subject" Type="Self.Ass_Classe_Subject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Classes">
-        <PropertyRef Name="Code" />
-      </Principal>
-      <Dependent Role="Ass_Classe_Subject">
-        <PropertyRef Name="ClasseCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_Ass_Subject">
-    <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
-    <End Role="Ass_Classe_Subject" Type="Self.Ass_Classe_Subject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Subjects">
-        <PropertyRef Name="Code" />
-      </Principal>
-      <Dependent Role="Ass_Classe_Subject">
-        <PropertyRef Name="SubjectCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fk_Asse_Classe">
     <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
     <End Role="Ass_Prof_Classe" Type="Self.Ass_Prof_Classe" Multiplicity="*" />
@@ -132,20 +97,11 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="SchoolAppTEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Ass_Classe_Subject" EntityType="Self.Ass_Classe_Subject" />
     <EntitySet Name="Ass_Prof_Classe" EntityType="Self.Ass_Prof_Classe" />
     <EntitySet Name="Classes" EntityType="Self.Classes" />
     <EntitySet Name="Students" EntityType="Self.Students" />
     <EntitySet Name="Subjects" EntityType="Self.Subjects" />
     <EntitySet Name="Teachers" EntityType="Self.Teachers" />
-    <AssociationSet Name="fk_Ass_Classe" Association="Self.fk_Ass_Classe">
-      <End Role="Classes" EntitySet="Classes" />
-      <End Role="Ass_Classe_Subject" EntitySet="Ass_Classe_Subject" />
-    </AssociationSet>
-    <AssociationSet Name="fk_Ass_Subject" Association="Self.fk_Ass_Subject">
-      <End Role="Subjects" EntitySet="Subjects" />
-      <End Role="Ass_Classe_Subject" EntitySet="Ass_Classe_Subject" />
-    </AssociationSet>
     <AssociationSet Name="fk_Asse_Classe" Association="Self.fk_Asse_Classe">
       <End Role="Classes" EntitySet="Classes" />
       <End Role="Ass_Prof_Classe" EntitySet="Ass_Prof_Classe" />

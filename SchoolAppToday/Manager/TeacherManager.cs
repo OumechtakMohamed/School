@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using SchoolAppToday.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 
 namespace SchoolAppToday.Manager
@@ -28,9 +32,36 @@ namespace SchoolAppToday.Manager
                            select c);
             return classes.ToList();
         }
-        public Teachers GetTeacherFromDB(int id)
+        public TeacherInfosModel GetTeacherDataFromDB()
         {
-            return db.Teachers.Where(s => s.Id == id).FirstOrDefault();
+            TeacherInfosModel t = new TeacherInfosModel();
+            var claimsIdentity = HttpContext.Current.User.Identity as ClaimsIdentity;
+            var userStore = new UserStore<ApplicationUser>(new ApplicationDbContext());
+            var manager = new UserManager<ApplicationUser>(userStore);
+            string identifiant = claimsIdentity.Claims.Where(claim => claim.Type == "Id").FirstOrDefault().Value;
+            t.FirstName = claimsIdentity.Claims.Where(claim => claim.Type == "FirstName").FirstOrDefault().Value;
+            t.LastName = claimsIdentity.Claims.Where(claim => claim.Type == "LastName").FirstOrDefault().Value;
+            t.Email = claimsIdentity.Claims.Where(claim => claim.Type == "Email").FirstOrDefault().Value;
+            t.Subject = (from a in db.Teachers
+                        join c in db.Subjects on a.Subject_Code equals c.Code
+                        where a.User_Id == identifiant
+                        select c).SingleOrDefault();
+            var suat = (from st in db.Students
+                        join c in db.Classes on st.Classe_Code equals c.Code
+                        join ass in db.Ass_Prof_Classe on c.Code equals ass.ClasseCode
+                        join tch in db.Teachers on ass.Prof_Id equals tch.Id
+                        where tch.User_Id == identifiant
+                        select new { c, StudentFullName = st.FullName }).ToList();
+
+            t.ClassesAndStudents = new List<StudentClasseModel>();
+            foreach (var foo in suat)
+            {
+                StudentClasseModel hr = new StudentClasseModel();
+                hr.Classe = foo.c;
+                hr.StudentFullName = foo.StudentFullName;
+                t.ClassesAndStudents.Add(hr);
+            }
+            return t;
         }
 
         public bool DeleteTeacherFromDB(int id)

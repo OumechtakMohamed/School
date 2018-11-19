@@ -44,21 +44,6 @@ namespace SchoolAppToday.Controller
         }
 
         /// <summary>
-        /// Get all classes of a subject
-        /// </summary>
-        /// <remarks>
-        /// Get a list of all subjects of a subject
-        /// </remarks>
-        /// <returns></returns>
-        /// <response code="200"></response>
-        [Route("api/subject/{code}/classes")]
-        [HttpGet]
-        public List<Classes> GetSubjectClasses(string code)
-        {
-            return subjectManager.GetSubjectClassesFromDB(code);
-        }
-
-        /// <summary>
         /// Delete a subejct
         /// </summary>
         /// <remarks>

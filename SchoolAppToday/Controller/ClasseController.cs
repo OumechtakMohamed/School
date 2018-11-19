@@ -59,21 +59,6 @@ namespace SchoolAppToday.Controller
         }
 
         /// <summary>
-        /// Get all subjects for a classe
-        /// </summary>
-        /// <remarks>
-        /// Get a list of subjects of a classe
-        /// </remarks>
-        /// <returns></returns>
-        /// <response code="200"></response>
-        [Route("api/classe/{code}/subjects")]
-        [HttpGet]
-        public List<Subjects> GetClasseSubjects(string code)
-        {
-            return classeManager.GetClasseSubjectsFromDB(code);
-        }
-
-        /// <summary>
         /// Delete a classe
         /// </summary>
         /// <remarks>
@@ -125,25 +110,6 @@ namespace SchoolAppToday.Controller
             if (classeManager.UpdateClasseIntoDB(clas))
                 return Ok();
             else return BadRequest("Not a valid subject to update");
-        }
-
-        /// <summary>
-        /// Create a subject for a classe
-        /// </summary>
-        /// <remarks>
-        /// Create a subject for a classe
-        /// </remarks>
-        /// <returns></returns>
-        /// <response code="200"></response>
-        [Route("api/classe/{ClasseCode}/subject/create")]
-        [HttpPost]
-        public IHttpActionResult CreateClasseSubject(string ClasseCode,[FromBody]string subject)
-        {
-            if (subject != null && ClasseCode != null && classeManager.CreateClasseSubjectIntoDB(ClasseCode, subject))
-            {
-                return Ok();
-            }
-            else return BadRequest("Not a valid subject to create");
         }
     }
 }

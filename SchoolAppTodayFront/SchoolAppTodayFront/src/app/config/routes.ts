@@ -7,6 +7,7 @@ import { SignInComponent } from '../views/sign-in/sign-in.component';
 import { UserComponent } from '../views/user/user.component';
 import { ProfileComponent } from '../views/profile/profile/profile.component';
 import { MystudentComponent } from '../views/mystudent/mystudent/mystudent.component';
+import { MyteacherComponent } from '../views/myteacher/myteacher/myteacher.component';
 
 export const appRoutes : Routes = [
   {path : 'home', component : HomeComponent, canActivate: [AuthGuard],data : {roles : ['Admin']}},
@@ -16,6 +17,9 @@ export const appRoutes : Routes = [
   },
   {path : 'mystudent',  component : HomeComponent,
   children : [{path : '', component : MystudentComponent}],canActivate: [AuthGuard],data : {roles : ['Student']}
+  },
+  {path : 'myteacher',  component : HomeComponent,
+  children : [{path : '', component : MyteacherComponent}],canActivate: [AuthGuard],data : {roles : ['Teacher']}
   },
   {path: 'profile', component : HomeComponent,
   children : [{path : '', component : ProfileComponent}],canActivate: [AuthGuard],data : {roles : ['Admin','Student','Teacher']}

@@ -1,0 +1,42 @@
+<h3>{{title}}</h3>
+<div class="col s12 white">
+  <div class="infos col s6">
+  <label>FirstName: </label><span>{{myData?.FirstName}}</span>
+  </div>
+  <div class="infos col s6">
+  <label>LastName: </label><span>{{myData?.LastName}}</span>
+  </div>
+  <div class="infos col s6">
+  <label>Email: </label><span>{{myData?.Email}}</span>
+  </div>
+  <div class="infos col s6">
+  <label>Classe: </label><span>{{myData?.Subject.Label}}({{myData?.Subject.Code}})</span>
+  </div>
+  <br><br>
+  <div class="dataTable">
+    <table>
+      <thead>
+          <tr>
+              <th>
+                Student
+              </th>
+              <th>
+                Classe
+              </th>
+            </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let col of myData?.ClassesAndStudents">
+              <td>
+                {{col.StudentFullName}}
+              </td>
+              <td>
+                {{col.Classe.Label}} ({{col.Classe.Code}})
+              </td>
+            </tr>
+      </tbody>
+      
+    </table>
+  </div>
+</div>
+

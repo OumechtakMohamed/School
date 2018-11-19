@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="SchoolAppModelStoreContainer" CdmEntityContainer="SchoolAppTEntities">
-    <EntitySetMapping Name="Ass_Classe_Subject">
-      <EntityTypeMapping TypeName="SchoolAppModel.Ass_Classe_Subject">
-        <MappingFragment StoreEntitySet="Ass_Classe_Subject">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ClasseCode" ColumnName="ClasseCode" />
-          <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Ass_Prof_Classe">
       <EntityTypeMapping TypeName="SchoolAppModel.Ass_Prof_Classe">
         <MappingFragment StoreEntitySet="Ass_Prof_Classe">
@@ -30,6 +21,7 @@
     <EntitySetMapping Name="Students">
       <EntityTypeMapping TypeName="SchoolAppModel.Students">
         <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Classe_Code" ColumnName="Classe_Code" />
           <ScalarProperty Name="User_Id" ColumnName="User_Id" />
