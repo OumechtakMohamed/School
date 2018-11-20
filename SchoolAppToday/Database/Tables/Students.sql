@@ -7,8 +7,8 @@
 	  Classe_Code varchar(20) NOT NULL,
 	  constraint fk_Student_Classe foreign key (Classe_Code) 
                references Classes(Code)
-               on update no action
-               on delete no action,
+               on update CASCADE
+               on delete CASCADE,
 
     )
 ON  [PRIMARY]

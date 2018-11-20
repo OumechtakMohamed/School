@@ -2,7 +2,10 @@
     <div class="nav-wrapper">
       <ul class="left hide-on-med-and-down">
           <li *ngIf="userService.roleMatch(['Admin'])">
-                <a routerLink="/signup" routerLinkActive='active'>Create User</a>
+                <a routerLink="/signup" routerLinkActive='active'>Add User</a>
+          </li>
+          <li *ngIf="userService.roleMatch(['Admin'])">
+            <a routerLink="/classes" routerLinkActive='active'>Classes</a>
           </li>
           <li *ngIf="userService.roleMatch(['Student'])">
             <a routerLink="/mystudent" routerLinkActive='active'>My Data</a>

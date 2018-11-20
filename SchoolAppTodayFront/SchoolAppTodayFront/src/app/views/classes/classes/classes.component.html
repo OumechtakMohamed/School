@@ -1,0 +1,43 @@
+    <h3>{{title}}</h3>
+    <div class="col s12 white">
+      <div>
+          <a id="addClasseBtn" class="waves-effect waves-light btn" routerLink="/classe/add">New</a>
+      </div>
+      <br><br>
+      <div class="dataTable">
+        <table>
+          <thead>
+              <tr>
+                  <th>
+                    Code
+                  </th>
+                  <th>
+                    Classe
+                  </th>
+                  <th>
+                    
+                  </th>
+                  <th></th>
+                </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let col of classes">
+                  <td>
+                    {{col.Code}}
+                  </td>
+                  <td>
+                    {{col.Label}}
+                  </td>
+                  <td>
+                    <a class="waves-effect waves-light btn" routerLink="/classe/detail/{{col.Code}}">Edit</a>
+                  </td>
+                  <td>
+                      <a id="deleteBtn" class="waves-effect waves-light btn" (click)="delete(col)">Delete</a>
+                  </td>
+                </tr>
+          </tbody>
+          
+        </table>
+      </div>
+    </div>
+

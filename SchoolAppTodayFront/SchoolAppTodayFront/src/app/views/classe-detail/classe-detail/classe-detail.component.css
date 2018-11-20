@@ -1,0 +1,13 @@
+input{
+    color : black;
+}
+
+.btn{
+    background-color: rgb(47, 148, 86);
+    margin: 1%
+}
+
+input:disabled{
+    color: black;
+    border-bottom: 1px solid #9e9e9e;
+}

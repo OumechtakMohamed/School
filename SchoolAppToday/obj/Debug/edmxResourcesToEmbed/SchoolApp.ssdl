@@ -41,7 +41,9 @@
     <Property Name="FullName" Type="nvarchar(max)" />
   </EntityType>
   <Association Name="fk_Asse_Classe">
-    <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+    <End Role="Classes" Type="Self.Classes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Ass_Prof_Classe" Type="Self.Ass_Prof_Classe" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Classes">
@@ -65,7 +67,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="fk_Student_Classe">
-    <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+    <End Role="Classes" Type="Self.Classes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Students" Type="Self.Students" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Classes">

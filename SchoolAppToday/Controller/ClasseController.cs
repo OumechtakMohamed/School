@@ -68,6 +68,7 @@ namespace SchoolAppToday.Controller
         /// <response code="200"></response>
         [Route("api/classe/{code}")]
         [HttpDelete]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult Delete(string code)
         {
             if (classeManager.DeleteClasseFromDB(code))
@@ -86,6 +87,7 @@ namespace SchoolAppToday.Controller
         /// <response code="200"></response>
         [Route("api/classe/create")]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult CreateClasse([FromBody]Classes clas)
         {
             if (clas != null && classeManager.CreateClasseIntoDB(clas))
@@ -105,6 +107,7 @@ namespace SchoolAppToday.Controller
         /// <response code="200"></response>
         [Route("api/classe/update")]
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult UpdateClasse([FromBody]Classes clas)
         {
             if (classeManager.UpdateClasseIntoDB(clas))

@@ -1,0 +1,14 @@
+.waves-effect{
+    height: 80%;
+}
+
+#deleteBtn{
+    background-color: rgb(158, 32, 39);
+    text-align: center;
+}
+
+#addClasseBtn{
+    background-color: rgb(12, 10, 14);
+    width : 14%;
+    text-align: center;
+}

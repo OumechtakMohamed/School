@@ -9,18 +9,16 @@
 
 namespace SchoolAppToday
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Students
     {
         public int Id { get; set; }
         public string Classe_Code { get; set; }
         public string User_Id { get; set; }
         public string FullName { get; set; }
-
-        [JsonIgnore]
+    
         public virtual Classes Classes { get; set; }
     }
 }

@@ -6,8 +6,8 @@
       ClasseCode varchar(20) NOT NULL,
 	     constraint fk_Asse_Classe foreign key (ClasseCode) 
                references Classes(Code)
-               on update no action
-               on delete no action,
+               on update CASCADE
+               on delete CASCADE,
       constraint fk_Asse_Prof foreign key (Prof_Id) 
                references Teachers(Id)
                on update no action
