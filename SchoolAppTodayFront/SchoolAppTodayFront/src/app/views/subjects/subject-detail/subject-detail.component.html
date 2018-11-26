@@ -1,0 +1,16 @@
+<h3>{{title}}</h3>
+<br><br>
+<div *ngIf="subject">
+  <div>
+      <label>Subject Code:
+          <input [(ngModel)]="subject.Code" disabled/>
+        </label>
+  </div>
+  <div>
+      <label>Subject Name:
+          <input [(ngModel)]="subject.Label" placeholder="Name"/>
+        </label>
+  </div>
+  <a class="waves-effect waves-light btn" (click)="goBack()">go back</a>
+  <a *ngIf="subject?.Label" class="waves-effect waves-light btn" (click)="save()">save</a>
+</div>

@@ -118,5 +118,89 @@
       <End Role="Subjects" EntitySet="Subjects" />
       <End Role="Teachers" EntitySet="Teachers" />
     </AssociationSet>
+    <FunctionImport Name="GET_ALL_STUDENTS_PS" />
+    <FunctionImport Name="GET_STUDENTS_PS" ReturnType="Collection(SchoolAppModel.GET_STUDENTS_PS_Result)" />
+    <FunctionImport Name="DELETE_STUDENT_PS">
+      <Parameter Name="student_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GET_TEACHERS_PS" ReturnType="Collection(SchoolAppModel.GET_TEACHERS_PS_Result)" />
+    <FunctionImport Name="DELETE_TEACHER_PS">
+      <Parameter Name="teacher_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GET_TEACHER_BY_ID_PS" ReturnType="Collection(SchoolAppModel.GET_TEACHER_BY_ID_PS_Result)">
+      <Parameter Name="teacher_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="update_TEACHER_BY_ID_PS">
+      <Parameter Name="teacher_id" Mode="In" Type="Int32" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GET_STUDENT_BY_ID_PS" ReturnType="Collection(SchoolAppModel.GET_STUDENT_BY_ID_PS_Result)">
+      <Parameter Name="student_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="update_STUDENT_BY_ID_PS">
+      <Parameter Name="student_id" Mode="In" Type="Int32" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UPDATEE_STUDENT_BY_ID_PS">
+      <Parameter Name="student_id" Mode="In" Type="Int32" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ADD_TEACHER_TO_CLASSE_PS">
+      <Parameter Name="teacher_id" Mode="In" Type="Int32" />
+      <Parameter Name="code" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DELETE_TEACHER_FROM_CLASSE_PS">
+      <Parameter Name="teacher_id" Mode="In" Type="Int32" />
+      <Parameter Name="code" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="GET_STUDENTS_PS_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="FullName" Nullable="true" />
+    <Property Type="String" Name="FirstName" Nullable="true" />
+    <Property Type="String" Name="LastName" Nullable="true" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Label" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GET_TEACHERS_PS_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="FullName" Nullable="true" />
+    <Property Type="String" Name="FirstName" Nullable="true" />
+    <Property Type="String" Name="LastName" Nullable="true" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Label" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GET_TEACHER_BY_ID_PS_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="FullName" Nullable="true" />
+    <Property Type="String" Name="FirstName" Nullable="true" />
+    <Property Type="String" Name="LastName" Nullable="true" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Label" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GET_STUDENT_BY_ID_PS_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="FullName" Nullable="true" />
+    <Property Type="String" Name="FirstName" Nullable="true" />
+    <Property Type="String" Name="LastName" Nullable="true" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Label" Nullable="false" MaxLength="50" />
+  </ComplexType>
 </Schema>

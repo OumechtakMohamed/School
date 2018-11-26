@@ -25,7 +25,12 @@ namespace SchoolAppToday.Controller
         [Authorize(Roles = "Admin")]
         public IEnumerable<Classes> GetClasses()
         {
-            return classeManager.GetClassesFromDB();
+            IEnumerable<Classes> items = classeManager.GetClassesFromDB();
+            if (items == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return items;
         }
 
         /// <summary>
@@ -95,6 +100,46 @@ namespace SchoolAppToday.Controller
                 return Ok();
             }
             else return BadRequest("Not a valid subject to create");
+        }
+
+        /// <summary>
+        /// Insert teacher into classe
+        /// </summary>
+        /// <remarks>
+        /// Insert teacher into classe
+        /// </remarks>
+        /// <returns></returns>
+        /// <response code="200"></response>
+        [Route("api/classe/{code}/teacher")]
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IHttpActionResult AddTeacherToClasse(String code,[FromBody]int id)
+        {
+            if (!String.IsNullOrEmpty(code) && classeManager.AddTeacherToClasseIntoDB(code,id))
+            {
+                return Ok();
+            }
+            else return BadRequest("Not a valid subject to create");
+        }
+
+        /// <summary>
+        /// Delete a teacher from classe
+        /// </summary>
+        /// <remarks>
+        /// Delete a teacher from classe
+        /// </remarks>
+        /// <returns></returns>
+        /// <response code="200"></response>
+        [Route("api/classe/{code}/teacher/{id}")]
+        [HttpDelete]
+        [Authorize(Roles = "Admin")]
+        public IHttpActionResult DeleteTeacherFromClasse(string code, int id)
+        {
+            if (classeManager.removeTeacherAssClassesFromDB(code, id))
+            {
+                return Ok();
+            }
+            else return BadRequest("Not a valid teacher id");
         }
 
         /// <summary>

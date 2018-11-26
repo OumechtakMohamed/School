@@ -65,7 +65,8 @@ export class SignUpComponent implements OnInit {
      	Email : '',
      	FirstName : '',
       LastName : '',
-     }
+     };
+     this.radioSelected = '1';
   }
 
   handleChange(radioSelected){

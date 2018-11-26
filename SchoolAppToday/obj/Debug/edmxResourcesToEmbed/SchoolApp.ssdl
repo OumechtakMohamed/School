@@ -92,6 +92,49 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="ADD_TEACHER_TO_CLASSE_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="teacher_id" Type="int" Mode="In" />
+    <Parameter Name="code" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="DELETE_STUDENT_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="student_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DELETE_TEACHER_FROM_CLASSE_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="teacher_id" Type="int" Mode="In" />
+    <Parameter Name="code" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="DELETE_TEACHER_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="teacher_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GET_STUDENT_BY_ID_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="student_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GET_STUDENTS_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GET_TEACHER_BY_ID_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="teacher_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GET_TEACHERS_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="update_STUDENT_BY_ID_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="student_id" Type="int" Mode="In" />
+    <Parameter Name="FirstName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="LastName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Code" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="update_TEACHER_BY_ID_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="teacher_id" Type="int" Mode="In" />
+    <Parameter Name="FirstName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="LastName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Code" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UPDATEE_STUDENT_BY_ID_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="student_id" Type="int" Mode="In" />
+    <Parameter Name="FirstName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="LastName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Code" Type="varchar" Mode="In" />
+  </Function>
   <EntityContainer Name="SchoolAppModelStoreContainer">
     <EntitySet Name="Ass_Prof_Classe" EntityType="Self.Ass_Prof_Classe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -43,6 +44,41 @@ namespace SchoolAppToday.Manager
                 }
             }
             return result;
+        }
+        public Boolean AddTeacherToClasseIntoDB(string code, int id)
+        {
+            bool rep = false;
+            try
+            {
+                rep = true;
+                db.Database.ExecuteSqlCommand("ADD_TEACHER_TO_CLASSE_PS @TeacherID,@Code",
+            new SqlParameter("TeacherID", id), new SqlParameter("Code", code));
+            }
+            catch (Exception ex)
+            {
+                rep = false;
+                Console.WriteLine(ex);
+                throw;
+            }
+            return rep;
+        }
+
+        public Boolean removeTeacherAssClassesFromDB(string code, int id)
+        {
+            bool rep = false;
+            try
+            {
+                rep = true;
+                db.Database.ExecuteSqlCommand("DELETE_TEACHER_FROM_CLASSE_PS @TeacherID,@Code",
+            new SqlParameter("TeacherID", id), new SqlParameter("Code", code));
+            }
+            catch (Exception ex)
+            {
+                rep = false;
+                Console.WriteLine(ex);
+                throw;
+            }
+            return rep;
         }
 
         public List<Teachers> GetClasseTeachersFromDB(string code)

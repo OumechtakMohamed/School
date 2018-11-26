@@ -1,0 +1,58 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar><span id="menu">Menu</span></mat-toolbar>
+    <mat-nav-list>
+        <li *ngIf="userService.roleMatch(['Admin','Teacher','Student'])" routerLinkActive='active'>
+            <a routerLink="/profile" >Profile</a>
+        </li>
+        <li *ngIf="userService.roleMatch(['Admin'])" routerLinkActive='active'>
+        <a routerLink="/signup">Add User</a>
+        <li *ngIf="userService.roleMatch(['Admin'])" routerLinkActive='active'>
+        <a routerLink="/classes">Classes</a>
+        </li>
+        <li *ngIf="userService.roleMatch(['Admin'])" routerLinkActive='active'>
+        <a routerLink="/subjects">Subjects</a>
+        </li>
+        <li *ngIf="userService.roleMatch(['Admin'])" routerLinkActive='active'>
+        <a routerLink="/students">Students</a>
+        </li>
+        <li *ngIf="userService.roleMatch(['Admin'])" routerLinkActive='active'>
+        <a routerLink="/teachers">Teachers</a>
+        </li>
+        <li *ngIf="userService.roleMatch(['Student'])" routerLinkActive='active'>
+        <a routerLink="/mystudent">My Data</a>
+        </li>
+        <li *ngIf="userService.roleMatch(['Teacher'])" routerLinkActive='active'>
+        <a routerLink="/myteacher">My Data</a>
+        </li>
+        <div class="menubottom">
+            <li>
+                <a class="exit" (click)="Logout()"><i class="small material-icons">power_settings_new</i></a>
+            </li>
+        </div>    
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>  
+    </mat-toolbar>
+    <ng-content>
+    </ng-content>
+  </mat-sidenav-content>
+  <footer class="page-footer">
+        <div class="container">
+        © {{today | date:'yyyy'}} Copyright SchoolAppToday
+        </div>
+        <br>
+    </footer>
+    
+</mat-sidenav-container>

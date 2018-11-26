@@ -12,6 +12,7 @@ namespace SchoolAppToday.Controller
     public class TeacherController : ApiController
     {
         public TeacherManager teacherManager = new TeacherManager();
+        public ClasseManager classeManager = new ClasseManager();
 
         /// <summary>
         /// Get all teachers
@@ -23,9 +24,36 @@ namespace SchoolAppToday.Controller
         /// <response code="200"></response>
         [Route("api/teachers")]
         [HttpGet]
-        public List<Teachers> GetTeachers()
+        [Authorize(Roles = "Admin")]
+        public IEnumerable<GET_TEACHERS_PS_Result> GetStudents()
         {
-            return teacherManager.GetTeachersFromDB();
+            IEnumerable<GET_TEACHERS_PS_Result> items = teacherManager.GetTeachersFromDB();
+            if (items == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return items;
+        }
+
+        /// <summary>
+        /// Get teacher by id
+        /// </summary>
+        /// <remarks>
+        /// Get teacher by id
+        /// </remarks>
+        /// <returns></returns>
+        /// <response code="200"></response>
+        [Route("api/teacher/{id}")]
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public GET_TEACHER_BY_ID_PS_Result GetTeacherById(int id)
+        {
+            GET_TEACHER_BY_ID_PS_Result item = teacherManager.GetTeachersByIdFromDB(id);
+            if (item == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return item;
         }
 
         /// <summary>
@@ -71,9 +99,8 @@ namespace SchoolAppToday.Controller
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
-            if (teacherManager.DeleteTeacherFromDB(id))
+            if (teacherManager.DeleteTeacherFromDB(id) && classeManager.removeTeacherAssClassesFromDB(null,id))
             {
-                teacherManager.removeTeacherAssClassesFromDB(id);
                 return Ok(); }
             else return BadRequest("Not a valid teacher id");
         }
@@ -109,7 +136,8 @@ namespace SchoolAppToday.Controller
         /// <response code="200"></response>
         [Route("api/teacher/update")]
         [HttpPut]
-        public IHttpActionResult UpdateTeacher([FromBody]Teachers teach)
+        [Authorize(Roles = "Admin")]
+        public IHttpActionResult UpdateTeacher([FromBody]TeacherInfosModel teach)
         {
             if (teacherManager.UpdateTeacherIntoDB(teach))
                 return Ok();

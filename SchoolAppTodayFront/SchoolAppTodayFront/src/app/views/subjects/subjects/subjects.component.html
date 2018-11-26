@@ -1,0 +1,60 @@
+<h3>{{title}}</h3>
+<div class="col s12 white">
+  <div>
+      <a id="addSubjectBtn" class="waves-effect waves-light btn" routerLink="/subject/add">New</a>
+  </div>
+  <br><br>
+      <ngx-smart-modal #myModal identifier="myModal" ngDraggable>
+          <div class="header">
+              <h4>Delete the Subject <i class="small material-icons">delete_forever</i></h4>
+          </div>
+          <div class="content">
+              <p>Do you really want to delete the subject <span style="color:red">({{this.chosen?.Label}})</span> ?</p>
+              <p>N.B: All the teachers teaching this subject will be deleted!</p>
+          </div><br><br>
+          <div class="footer">
+                <a class="confirm waves-effect waves-light btn" (click)="myModal.close()">No</a>
+                <a class="confirm waves-effect waves-light btn" (click)="delete(this.chosen)">Yes</a>
+            </div>
+          </ngx-smart-modal>
+          <label for="Search" style="color:black">Search: </label><input type="text" [(ngModel)]="query" placeholder="Name of Subject">
+<div class="dataTable">
+    <table>
+      <thead>
+          <tr>
+              <th [class.active]="order === 'code'"
+              (click)="setOrder('code')">
+                Code<span [hidden]="reverse">▼</span
+                  ><span [hidden]="!reverse">▲</span>
+              </th>
+              <th [class.active]="order === 'label'"
+              (click)="setOrder('label')">
+                Label<span [hidden]="reverse">▼</span
+                  ><span [hidden]="!reverse">▲</span>
+              </th>
+              <th>
+                
+              </th>
+              <th></th>
+            </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let col of subjects | orderBy: order:reverse:'case-insensitive' | searchPipe : query | paginate : { itemsPerPage:3, currentPage: p } ">
+              <td>
+                {{col.Code}}
+              </td>
+              <td>
+                {{col.Label}}
+              </td>
+              <td>
+                <a class="waves-effect waves-light btn" routerLink="/subject/detail/{{col.Code}}">Edit</a>
+              </td>
+              <td>
+                  <a id="deleteBtn" class="waves-effect waves-light btn" (click)="showDelete(col)">Delete</a>
+              </td>
+            </tr>
+      </tbody>   
+    </table>
+  </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

@@ -1,0 +1,27 @@
+<h3>{{title}}</h3>
+<br><br>
+<div *ngIf="teacher">
+  <div>
+      <label>Teacher FirstName:
+          <input [(ngModel)]="teacher.FirstName"/>
+        </label>
+  </div>
+  <div>
+      <label>Teacher LastName:
+          <input [(ngModel)]="teacher.LastName"/>
+        </label>
+  </div>
+  <div>
+      <label>Teacher Email:
+          <input [(ngModel)]="teacher.Email"/>
+        </label>
+  </div>
+  <div class="subjects">
+      <label>Subject:</label>
+      <select name="subjectSelect" [(ngModel)]="teacher.Code">
+              <option *ngFor="let enum of subjects" [ngValue]="enum.Code">{{enum.Label}}</option>
+      </select>
+</div><br>
+  <a class="waves-effect waves-light btn" (click)="goBack()">go back</a>
+  <a class="waves-effect waves-light btn" (click)="save()">save</a>
+</div>

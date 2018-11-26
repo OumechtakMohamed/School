@@ -12,6 +12,8 @@ namespace SchoolAppToday
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class SchoolAppTEntities : DbContext
     {
@@ -30,5 +32,157 @@ namespace SchoolAppToday
         public virtual DbSet<Students> Students { get; set; }
         public virtual DbSet<Subjects> Subjects { get; set; }
         public virtual DbSet<Teachers> Teachers { get; set; }
+    
+        public virtual int GET_ALL_STUDENTS_PS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GET_ALL_STUDENTS_PS");
+        }
+    
+        public virtual ObjectResult<GET_STUDENTS_PS_Result> GET_STUDENTS_PS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_STUDENTS_PS_Result>("GET_STUDENTS_PS");
+        }
+    
+        public virtual int DELETE_STUDENT_PS(Nullable<int> student_id)
+        {
+            var student_idParameter = student_id.HasValue ?
+                new ObjectParameter("student_id", student_id) :
+                new ObjectParameter("student_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETE_STUDENT_PS", student_idParameter);
+        }
+    
+        public virtual ObjectResult<GET_TEACHERS_PS_Result> GET_TEACHERS_PS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_TEACHERS_PS_Result>("GET_TEACHERS_PS");
+        }
+    
+        public virtual int DELETE_TEACHER_PS(Nullable<int> teacher_id)
+        {
+            var teacher_idParameter = teacher_id.HasValue ?
+                new ObjectParameter("teacher_id", teacher_id) :
+                new ObjectParameter("teacher_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETE_TEACHER_PS", teacher_idParameter);
+        }
+    
+        public virtual ObjectResult<GET_TEACHER_BY_ID_PS_Result> GET_TEACHER_BY_ID_PS(Nullable<int> teacher_id)
+        {
+            var teacher_idParameter = teacher_id.HasValue ?
+                new ObjectParameter("teacher_id", teacher_id) :
+                new ObjectParameter("teacher_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_TEACHER_BY_ID_PS_Result>("GET_TEACHER_BY_ID_PS", teacher_idParameter);
+        }
+    
+        public virtual int update_TEACHER_BY_ID_PS(Nullable<int> teacher_id, string firstName, string lastName, string email, string code)
+        {
+            var teacher_idParameter = teacher_id.HasValue ?
+                new ObjectParameter("teacher_id", teacher_id) :
+                new ObjectParameter("teacher_id", typeof(int));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var codeParameter = code != null ?
+                new ObjectParameter("Code", code) :
+                new ObjectParameter("Code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("update_TEACHER_BY_ID_PS", teacher_idParameter, firstNameParameter, lastNameParameter, emailParameter, codeParameter);
+        }
+    
+        public virtual ObjectResult<GET_STUDENT_BY_ID_PS_Result> GET_STUDENT_BY_ID_PS(Nullable<int> student_id)
+        {
+            var student_idParameter = student_id.HasValue ?
+                new ObjectParameter("student_id", student_id) :
+                new ObjectParameter("student_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_STUDENT_BY_ID_PS_Result>("GET_STUDENT_BY_ID_PS", student_idParameter);
+        }
+    
+        public virtual int update_STUDENT_BY_ID_PS(Nullable<int> student_id, string firstName, string lastName, string email, string code)
+        {
+            var student_idParameter = student_id.HasValue ?
+                new ObjectParameter("student_id", student_id) :
+                new ObjectParameter("student_id", typeof(int));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var codeParameter = code != null ?
+                new ObjectParameter("Code", code) :
+                new ObjectParameter("Code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("update_STUDENT_BY_ID_PS", student_idParameter, firstNameParameter, lastNameParameter, emailParameter, codeParameter);
+        }
+    
+        public virtual int UPDATEE_STUDENT_BY_ID_PS(Nullable<int> student_id, string firstName, string lastName, string email, string code)
+        {
+            var student_idParameter = student_id.HasValue ?
+                new ObjectParameter("student_id", student_id) :
+                new ObjectParameter("student_id", typeof(int));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var codeParameter = code != null ?
+                new ObjectParameter("Code", code) :
+                new ObjectParameter("Code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATEE_STUDENT_BY_ID_PS", student_idParameter, firstNameParameter, lastNameParameter, emailParameter, codeParameter);
+        }
+    
+        public virtual int ADD_TEACHER_TO_CLASSE_PS(Nullable<int> teacher_id, string code)
+        {
+            var teacher_idParameter = teacher_id.HasValue ?
+                new ObjectParameter("teacher_id", teacher_id) :
+                new ObjectParameter("teacher_id", typeof(int));
+    
+            var codeParameter = code != null ?
+                new ObjectParameter("code", code) :
+                new ObjectParameter("code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ADD_TEACHER_TO_CLASSE_PS", teacher_idParameter, codeParameter);
+        }
+    
+        public virtual int DELETE_TEACHER_FROM_CLASSE_PS(Nullable<int> teacher_id, string code)
+        {
+            var teacher_idParameter = teacher_id.HasValue ?
+                new ObjectParameter("teacher_id", teacher_id) :
+                new ObjectParameter("teacher_id", typeof(int));
+    
+            var codeParameter = code != null ?
+                new ObjectParameter("code", code) :
+                new ObjectParameter("code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETE_TEACHER_FROM_CLASSE_PS", teacher_idParameter, codeParameter);
+        }
     }
 }

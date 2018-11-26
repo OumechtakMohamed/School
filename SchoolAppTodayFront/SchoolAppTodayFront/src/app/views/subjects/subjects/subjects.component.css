@@ -1,0 +1,41 @@
+.waves-effect{
+    height: 80%;
+}
+
+#deleteBtn{
+    background-color: rgb(158, 32, 39);
+    text-align: center;
+}
+
+#addSubjectBtn{
+    background-color: rgb(12, 10, 14);
+    width : 14%;
+    text-align: center;
+}
+
+.confirm{
+    background-color: rgb(143, 155, 41);
+    margin: 1%
+}
+
+.footer a{
+    float: right;
+}
+
+.popup{
+    margin-top: 190px;
+}
+
+thead th {
+    cursor: pointer;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+  thead th span{
+      visibility: hidden;
+    }
+
+    thead th.active span{
+            visibility: visible;
+          }

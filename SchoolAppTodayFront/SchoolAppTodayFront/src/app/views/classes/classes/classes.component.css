@@ -1,3 +1,14 @@
+.tabs .tab a {
+    font-size: 18px;
+    color: grey !important;
+    text-align: center;
+    cursor: pointer;
+}
+
+.actif{
+    border: 1px solid rgb(214, 166, 170);
+}
+
 .waves-effect{
     height: 80%;
 }
@@ -7,8 +18,49 @@
     text-align: center;
 }
 
+#test-swipe-1 , #test-swipe-2{
+    border: 1px solid rgb(214, 166, 170);
+}
+
+#TeachersBtn{
+    background-color: rgb(214, 166, 170);
+    text-align: center;
+    width: 74%;
+}
+
 #addClasseBtn{
     background-color: rgb(12, 10, 14);
     width : 14%;
     text-align: center;
 }
+
+.confirm{
+    background-color: rgb(143, 155, 41);
+    margin: 1%
+}
+
+.footer a{
+    float: right;
+}
+
+.popup{
+    margin-top: 190px;
+}
+
+thead th {
+    cursor: pointer;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+.cursored{
+    cursor: pointer; 
+}
+
+  thead th span{
+      visibility: hidden;
+    }
+
+    thead th.active span{
+            visibility: visible;
+          }

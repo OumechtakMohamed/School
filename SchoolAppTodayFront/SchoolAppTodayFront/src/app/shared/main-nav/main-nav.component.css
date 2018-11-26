@@ -1,0 +1,86 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  overflow-y: hidden;
+}
+
+.sidenav .mat-toolbar {
+  background: rgb(87, 173, 216);   
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.mat-toolbar{
+  background:#6cf;
+}
+
+.mat-nav-list{
+  background:rgb(198, 209, 214); 
+  height : 91.6%;
+  overflow-y: hidden;
+}
+.mat-drawer-inner-container{
+  overflow-y: hidden;
+}
+
+button{
+  background:#6cf; 
+}
+
+a{
+  margin-top:20px;
+  margin-left: 64px;
+}
+
+
+li{
+  margin-top:-4px;
+  text-align: left;
+  margin-left: 0px;
+  height: 30px;
+}
+
+ul,li {
+  list-style: none;
+}
+
+.page-footer{
+  text-align: center;
+  position:absolute;
+ bottom:0;
+ width:100%;
+ height:60px;   /* Height of the footer */
+ background:#6cf;
+}
+
+li.ng-star-inserted.active{
+  background:rgb(187, 195, 199);
+}
+
+.mat-list-base{
+  padding-top: 4px;
+}
+
+#menu{
+  margin-left: 35px;
+  font-size: 30px;
+}
+
+.menubottom{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+i.small{
+  margin-left: 19px;
+  color: red;
+  cursor: pointer;
+}

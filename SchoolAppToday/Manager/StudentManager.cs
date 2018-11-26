@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 using System.IdentityModel.Claims;
 using System.Linq;
 using System.Security.Claims;
@@ -23,9 +24,15 @@ namespace SchoolAppToday.Manager
             db.Configuration.ProxyCreationEnabled = false;
         }
 
-        public List<Students> GetStudentsFromDB()
+        public IEnumerable<GET_STUDENTS_PS_Result> GetStudentsFromDB()
         {
-            return db.Students.ToList();
+            return db.Database.SqlQuery<GET_STUDENTS_PS_Result>("GET_STUDENTS_PS");
+        }
+
+        public GET_STUDENT_BY_ID_PS_Result GetStudentsByIdFromDB(int id)
+        {
+            return db.Database.SqlQuery<GET_STUDENT_BY_ID_PS_Result>("GET_STUDENT_BY_ID_PS @StudentID",
+            new SqlParameter("StudentID", id)).SingleOrDefault();
         }
 
         public StudentInfosModel GetStudentDataFromDB()
@@ -59,29 +66,22 @@ namespace SchoolAppToday.Manager
             return s;
         }
 
-        public bool DeleteStudentFromDB(int id)
+        public Boolean DeleteStudentFromDB(int id)
         {
-            bool result1 = false;
-            var student = db.Students
-                    .Where(s => s.Id == id)
-                    .FirstOrDefault();
-            if (student != null)
+            bool rep = false;
+            try
             {
-
-                db.Entry(student).State = System.Data.Entity.EntityState.Deleted;
-                try
-                {
-                    db.SaveChanges();
-                    result1 = true;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                    result1 = false;
-                }
+                rep = true;
+                db.Database.ExecuteSqlCommand("DELETE_STUDENT_PS @StudentID",
+            new SqlParameter("StudentID", id));
             }
-            
-            return result1;
+            catch (Exception ex)
+            {
+                rep = false;
+                Console.WriteLine(ex);
+                throw;
+            }
+            return rep;
         }
 
         public void CreateStudentIntoDB(Students stud)
@@ -98,22 +98,18 @@ namespace SchoolAppToday.Manager
             }
         }
 
-        public bool UpdateStudentIntoDB(Students stud)
+        public bool UpdateStudentIntoDB(StudentInfosModel stud)
         {
             bool rep = false;
-            var result = db.Students.SingleOrDefault(b => b.Id == stud.Id);
-            if (result != null)
+            try
             {
-                db.Students.AddOrUpdate(stud);
-                try
-                {
-                    db.SaveChanges();
-                    rep = true;
-                }
-                catch
-                {
-                    rep = false;
-                }
+                db.Database.ExecuteSqlCommand("UPDATEE_STUDENT_BY_ID_PS @Id,@FirstName,@LastName,@Email, @Code",
+        new SqlParameter("Id", stud.Id), new SqlParameter("FirstName", stud.FirstName), new SqlParameter("LastName", stud.LastName), new SqlParameter("Email", stud.Email), new SqlParameter("Code", stud.Code));
+                rep = true;
+            }
+            catch
+            {
+                rep = false;
             }
             return rep;
         }

@@ -1,19 +1,111 @@
+    <div class="all-content" *ngIf="!loading">
     <h3>{{title}}</h3>
     <div class="col s12 white">
       <div>
           <a id="addClasseBtn" class="waves-effect waves-light btn" routerLink="/classe/add">New</a>
       </div>
       <br><br>
-      <div class="dataTable">
+            
+            <ngx-smart-modal #TeachersModal identifier="TeachersModal" ngDraggable>                                
+               <div class="header">
+                <h4>Teachers of the Classe</h4>
+                </div>
+                <ul id="tabs-swipe-demo" class="tabs">
+                        <li class="tab col s3"><a [ngClass]="{'actif':tab1}" (click)="loadAllTeachers();tab1 = true;tab2 = false;">List <br></a></li>
+                        <li class="tab col s3"><a [ngClass]="{'actif':tab2}" (click)="loadTeachersOfClasse(chosedClassForPopup);tab2 = true;tab1 = false;">Edit<br></a></li>                       
+                        <li class="tab col s3"></li>
+                        </ul>
+                        <div id="test-swipe-1" class="col s12" *ngIf="tab1">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                    <th [class.active]="order1 === 'FullName'"
+                                    (click)="setOrder1('FullName')">
+                                    Teacher<span [hidden]="reverse1">▼</span
+                                    ><span [hidden]="!reverse1">▲</span>
+                                    </th>
+                                    <th [class.active]="order1 === 'Subject_Code'"
+                                    (click)="setOrder1('Subject_Code')">
+                                    Subject<span [hidden]="reverse1">▼</span
+                                    ><span [hidden]="!reverse1">▲</span>
+                                    </th>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let col of teachersOfClasse | orderBy: order1:reverse1:'case-insensitive'">
+                                    <td>
+                                    {{col.FullName}}
+                                    </td>
+                                    <td>
+                                    {{col.Subject_Code}}
+                                    </td>
+                                    </tr>
+                                    </tbody>   
+                                </table>
+                        </div>
+                        <div id="test-swipe-2" class="col s12" *ngIf="tab2">
+                                <table>
+                                        <thead>
+                                        <tr>
+                                        <th [class.active]="order1 === 'code'"
+                                        (click)="setOrder1('code')">
+                                        Teacher<span [hidden]="reverse1">▼</span
+                                        ><span [hidden]="!reverse1">▲</span>
+                                        </th>
+                                        <th [class.active]="order1 === 'label'"
+                                        (click)="setOrder1('label')">
+                                        Subject<span [hidden]="reverse1">▼</span
+                                        ><span [hidden]="!reverse1">▲</span>
+                                        </th>
+                                        <th>Action</th>
+                                        </thead>
+                                        <tbody>
+                                        <tr *ngFor="let col of teachers | orderBy: order1:reverse1:'case-insensitive'">
+                                        <td>
+                                        {{col.FullName}}
+                                        </td>
+                                        <td>
+                                        {{col.Code}}
+                                        </td>
+                                        <td>
+                                                <i style="color:red" class="cursored small material-icons" *ngIf="verifyState(col) == 'ToDelete'" title="Remove" (click)="deleteteacherFromClasse(chosedClassForPopup,col.Id)">delete_forever</i>
+                                                <i style="color:green" class="cursored small material-icons" *ngIf="verifyState(col) == 'ToAdd'" title="Add" (click)="addteacherToClasse(chosedClassForPopup,col.Id)">add</i>
+                                                <i style="color:rgb(153, 0, 255)" class="small material-icons" title="There is a teacher teaching the same subject" *ngIf="verifyState(col) == 'Blocked'">block</i>
+                                        </td>
+                                        </tr>
+                                        </tbody>   
+                                    </table>
+                        </div>
+                        <div id="test-swipe-3" class="col"></div>
+            </ngx-smart-modal>
+            <ngx-smart-modal #myModal identifier="myModal" ngDraggable>
+                    <div class="header">
+                    <h4>Delete the Classe <i class="small material-icons">delete_forever</i></h4>
+                    </div>
+                    <div class="content">
+                    <p>Do you really want to delete the classe <span style="color:red"></span> ?</p>
+                    <p>N.B: All the students in this classe will be deleted!</p>
+                    </div><br><br>
+                    <div class="footer">
+                    <a class="confirm waves-effect waves-light btn" (click)="myModal.close()">No</a>
+                    <a class="confirm waves-effect waves-light btn" (click)="delete(this.chosen)">Yes</a>
+                    </div>
+                </ngx-smart-modal>
+              <label for="Search" style="color:black">Search: </label><input type="text" [(ngModel)]="query" placeholder="Name of Classe">
+  <div class="dataTable">
         <table>
           <thead>
               <tr>
-                  <th>
-                    Code
-                  </th>
-                  <th>
-                    Classe
-                  </th>
+                  <th [class.active]="order === 'code'"
+              (click)="setOrder('code')">
+                Code<span [hidden]="reverse">▼</span
+                  ><span [hidden]="!reverse">▲</span>
+              </th>
+              <th [class.active]="order === 'label'"
+              (click)="setOrder('label')">
+                Classe<span [hidden]="reverse">▼</span
+                  ><span [hidden]="!reverse">▲</span>
+              </th>
+              <th></th>
                   <th>
                     
                   </th>
@@ -21,7 +113,7 @@
                 </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let col of classes">
+              <tr *ngFor="let col of classes | orderBy: order:reverse:'case-insensitive' | searchPipe : query | paginate : { itemsPerPage:3, currentPage: p }">
                   <td>
                     {{col.Code}}
                   </td>
@@ -29,15 +121,18 @@
                     {{col.Label}}
                   </td>
                   <td>
+                        <a id="TeachersBtn" class="waves-effect waves-light btn" (click)="showTeachers(col)">Teachers</a>
+                  </td>
+                  <td>
                     <a class="waves-effect waves-light btn" routerLink="/classe/detail/{{col.Code}}">Edit</a>
                   </td>
                   <td>
-                      <a id="deleteBtn" class="waves-effect waves-light btn" (click)="delete(col)">Delete</a>
+                      <a id="deleteBtn" class="waves-effect waves-light btn" (click)="showDelete(col)">Delete</a>
                   </td>
                 </tr>
-          </tbody>
-          
+          </tbody>   
         </table>
       </div>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
-
+  </div>

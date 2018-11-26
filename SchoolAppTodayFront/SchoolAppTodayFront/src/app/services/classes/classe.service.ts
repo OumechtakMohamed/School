@@ -24,6 +24,11 @@ export class ClasseService {
     return this.http.get(this.rootUrl+ '/api/classes', httpOptions);
   }
 
+  getTeachersOfClasse(code:string){
+    const url = `${this.rootUrl+'/api/classe'}/${code}/teachers`;
+    return this.http.get<Classe>(url, httpOptions);
+  }
+
   getClasse(code: string): Observable<Classe>{
     const url = `${this.rootUrl+'/api/classe'}/${code}`;
     return this.http.get<Classe>(url, httpOptions);
@@ -44,5 +49,15 @@ export class ClasseService {
     const url = `${this.rootUrl+'/api/classe'}/${code}`;
 
     return this.http.delete<Classe>(url, httpOptions);
+  }
+
+  deleteTeacherFromClasse(code : string,  id : number){
+    const url = `${this.rootUrl+'/api/classe'}/${code}/teacher/${id}`;
+    return this.http.delete<Classe>(url, httpOptions);
+  }
+
+  addTeacherToClasse(code : string,  id : number){
+    const url = `${this.rootUrl+'/api/classe'}/${code}/teacher`;
+    return this.http.post(url,id, httpOptions);
   }
 }

@@ -1,0 +1,72 @@
+<h3>{{title}}</h3>
+<div class="col s12 white">
+  <br>
+      <ngx-smart-modal #myModal identifier="myModal">
+          <div class="header">
+              <h4>Delete the Teacher <i class="small material-icons">delete_forever</i></h4>
+          </div>
+          <div class="content">
+              <p>Do you really want to delete the teacher <span style="color:red">({{this.chosen?.FirstName+' '+this.chosen?.LastName}})</span> ?</p>
+          </div><br><br>
+          <div class="footer">
+              <a class="confirm waves-effect waves-light btn" (click)="myModal.close()">No</a>
+              <a class="confirm waves-effect waves-light btn" (click)="delete(this.chosen)">Yes</a>
+          </div>
+          </ngx-smart-modal>
+          <label for="Search" style="color:black">Search: </label><input type="text" [(ngModel)]="query" placeholder="Search Now">
+<div class="dataTable">
+    <table>
+      <thead>
+          <tr>
+              <th [class.active]="order === 'FirstName'"
+              (click)="setOrder('FirstName')">
+                FirstName<span [hidden]="reverse">▼</span
+                  ><span [hidden]="!reverse">▲</span>
+              </th>
+              <th [class.active]="order === 'LastName'"
+              (click)="setOrder('LastName')">
+                LastName<span [hidden]="reverse">▼</span
+                  ><span [hidden]="!reverse">▲</span>
+              </th>
+              <th [class.active]="order === 'Email'"
+              (click)="setOrder('Email')">
+                Email<span [hidden]="reverse">▼</span
+                  ><span [hidden]="!reverse">▲</span>
+              </th>
+              <th [class.active]="order === 'Subject'"
+              (click)="setOrder('Subject')">
+                Subject<span [hidden]="reverse">▼</span
+                  ><span [hidden]="!reverse">▲</span>
+              </th>
+              <th>
+                
+              </th>
+              <th></th>
+            </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let col of teachers | orderBy: order:reverse:'case-insensitive' | searchPipe : query  | paginate : { itemsPerPage:3, currentPage: p }">
+              <td>
+                {{col.FirstName}}
+              </td>
+              <td>
+                  {{col.LastName}}
+                </td>
+              <td>
+                {{col.Email}}
+              </td>
+              <td>
+                  {{col.Label}}
+              </td>
+              <td>
+                <a class="waves-effect waves-light btn" routerLink="/teacher/detail/{{col.Id}}">Edit</a>
+              </td>
+              <td>
+                  <a id="deleteBtn" class="waves-effect waves-light btn" (click)="showDelete(col)">Delete</a>
+              </td>
+            </tr>
+      </tbody>   
+    </table>
+  </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

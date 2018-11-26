@@ -30,6 +30,7 @@ namespace SchoolAppToday.Controller
             {
                 RequiredLength = 3
             };
+            model.Password = "123";
             IdentityResult result = manager.Create(user, model.Password);
             manager.AddToRole(user.Id, model.Role);
             if(!string.IsNullOrEmpty(model.Class_Code))

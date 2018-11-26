@@ -22,10 +22,15 @@ namespace SchoolAppToday.Controller
         /// <response code="200"></response>
         [Route("api/subjects")]
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public IEnumerable<Subjects> GetSubjects()
         {
-            return subjectManager.GetSubjectsFromDB();
+            IEnumerable<Subjects> items = subjectManager.GetSubjectsFromDB();
+            if (items == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return items;
         }
 
         /// <summary>
@@ -53,6 +58,7 @@ namespace SchoolAppToday.Controller
         /// <response code="200"></response>
         [Route("api/subject/{code}")]
         [HttpDelete]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult Delete(string code)
         {
             if (subjectManager.DeleteSubjectFromDB(code))
@@ -70,6 +76,7 @@ namespace SchoolAppToday.Controller
         /// <response code="200"></response>
         [Route("api/subject/create")]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult CreateSubject([FromBody]Subjects subj)
         {
             if (subj != null && subjectManager.CreateSubjectIntoDB(subj))
@@ -89,6 +96,7 @@ namespace SchoolAppToday.Controller
         /// <response code="200"></response>
         [Route("api/subject/update")]
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult UpdateSubject([FromBody]Subjects subj)
         {
             if (subjectManager.UpdateSubjectIntoDB(subj))

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Claims;
 using System.Web;
@@ -19,9 +20,15 @@ namespace SchoolAppToday.Manager
         {
             db.Configuration.ProxyCreationEnabled = false;
         }
-        public List<Teachers> GetTeachersFromDB()
+        public GET_TEACHER_BY_ID_PS_Result GetTeachersByIdFromDB(int id)
         {
-            return db.Teachers.ToList();
+            return db.Database.SqlQuery<GET_TEACHER_BY_ID_PS_Result>("GET_TEACHER_BY_ID_PS @TeacherID",
+            new SqlParameter("TeacherID", id)).SingleOrDefault();
+        }
+
+        public IEnumerable<GET_TEACHERS_PS_Result> GetTeachersFromDB()
+        {
+            return db.Database.SqlQuery<GET_TEACHERS_PS_Result>("GET_TEACHERS_PS");
         }
 
         public List<Classes> GetTeacherClassesFromDB(int id)
@@ -64,46 +71,24 @@ namespace SchoolAppToday.Manager
             return t;
         }
 
-        public bool DeleteTeacherFromDB(int id)
+        public Boolean DeleteTeacherFromDB(int id)
         {
-            bool result1 = false;
-            var teacher = db.Teachers
-                    .Where(s => s.Id == id)
-                    .FirstOrDefault();
-            if (teacher != null)
+            bool rep = false;
+            try
             {
-
-                db.Entry(teacher).State = System.Data.Entity.EntityState.Deleted;
-                try
-                {
-                    db.SaveChanges();
-                    result1 = true;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                    result1 = false;
-                }
+                rep = true;
+                db.Database.ExecuteSqlCommand("DELETE_TEACHER_PS @TeacherID",
+            new SqlParameter("TeacherID", id));
             }
-               
-                return result1;  
+            catch (Exception ex)
+            {
+                rep = false;
+                Console.WriteLine(ex);
+                throw;
+            }
+            return rep;
         }
 
-        public void removeTeacherAssClassesFromDB(int id)
-        {
-            if(id != null) { 
-                db.Ass_Prof_Classe.RemoveRange(db.Ass_Prof_Classe.Where(s => s.Prof_Id == id));
-                db.SaveChanges();
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-            }
-        }
         public bool CreateTeacherIntoDB(Teachers teach)
         {
             bool rep = false;
@@ -120,23 +105,19 @@ namespace SchoolAppToday.Manager
             }
             return rep;
         }
-        public bool UpdateTeacherIntoDB(Teachers teach)
+        public bool UpdateTeacherIntoDB(TeacherInfosModel teach)
         {
             bool rep = false;
-            var result = db.Teachers.SingleOrDefault(b => b.Id == teach.Id);
-            if (result != null)
-            {
-                db.Teachers.AddOrUpdate(teach);
                 try
                 {
-                    db.SaveChanges();
+                    db.Database.ExecuteSqlCommand("update_TEACHER_BY_ID_PS @Id,@FirstName,@LastName,@Email, @Code",
+            new SqlParameter("Id", teach.Id), new SqlParameter("FirstName", teach.FirstName), new SqlParameter("LastName", teach.LastName), new SqlParameter("Email", teach.Email), new SqlParameter("Code", teach.Code));
                     rep = true;
                 }
                 catch
                 {
                     rep = false;
                 } 
-            }
             return rep;
         }
 

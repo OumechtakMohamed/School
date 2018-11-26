@@ -46,5 +46,68 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GET_STUDENTS_PS" FunctionName="SchoolAppModel.Store.GET_STUDENTS_PS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolAppModel.GET_STUDENTS_PS_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Label" ColumnName="Label" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DELETE_STUDENT_PS" FunctionName="SchoolAppModel.Store.DELETE_STUDENT_PS" />
+    <FunctionImportMapping FunctionImportName="GET_TEACHERS_PS" FunctionName="SchoolAppModel.Store.GET_TEACHERS_PS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolAppModel.GET_TEACHERS_PS_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Label" ColumnName="Label" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DELETE_TEACHER_PS" FunctionName="SchoolAppModel.Store.DELETE_TEACHER_PS" />
+    <FunctionImportMapping FunctionImportName="GET_TEACHER_BY_ID_PS" FunctionName="SchoolAppModel.Store.GET_TEACHER_BY_ID_PS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolAppModel.GET_TEACHER_BY_ID_PS_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Label" ColumnName="Label" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="update_TEACHER_BY_ID_PS" FunctionName="SchoolAppModel.Store.update_TEACHER_BY_ID_PS" />
+    <FunctionImportMapping FunctionImportName="GET_STUDENT_BY_ID_PS" FunctionName="SchoolAppModel.Store.GET_STUDENT_BY_ID_PS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolAppModel.GET_STUDENT_BY_ID_PS_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Label" ColumnName="Label" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="update_STUDENT_BY_ID_PS" FunctionName="SchoolAppModel.Store.update_STUDENT_BY_ID_PS" />
+    <FunctionImportMapping FunctionImportName="UPDATEE_STUDENT_BY_ID_PS" FunctionName="SchoolAppModel.Store.UPDATEE_STUDENT_BY_ID_PS" />
+    <FunctionImportMapping FunctionImportName="ADD_TEACHER_TO_CLASSE_PS" FunctionName="SchoolAppModel.Store.ADD_TEACHER_TO_CLASSE_PS" />
+    <FunctionImportMapping FunctionImportName="DELETE_TEACHER_FROM_CLASSE_PS" FunctionName="SchoolAppModel.Store.DELETE_TEACHER_FROM_CLASSE_PS" />
   </EntityContainerMapping>
 </Mapping>

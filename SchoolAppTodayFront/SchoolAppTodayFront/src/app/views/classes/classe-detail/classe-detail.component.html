@@ -1,0 +1,18 @@
+<div class="all-content" *ngIf="!loading">
+<h3>{{title}}</h3>
+<br><br>
+<div *ngIf="classe">
+  <div>
+      <label>Classe Code:
+          <input [(ngModel)]="classe.Code" disabled/>
+        </label>
+  </div>
+  <div>
+      <label>Classe Name:
+          <input [(ngModel)]="classe.Label" placeholder="Name"/>
+        </label>
+  </div>
+  <a class="waves-effect waves-light btn" (click)="goBack()">go back</a>
+  <a *ngIf="classe?.Label" class="waves-effect waves-light btn" (click)="save()">save</a>
+</div>
+</div>

@@ -23,9 +23,15 @@ namespace SchoolAppToday.Controller
         /// <response code="200"></response>
         [Route("api/students")]
         [HttpGet]
-        public List<Students> GetStudents()
+        [Authorize(Roles = "Admin")]
+        public IEnumerable<GET_STUDENTS_PS_Result> GetStudents()
         {
-            return studentManager.GetStudentsFromDB();
+            IEnumerable<GET_STUDENTS_PS_Result> items = studentManager.GetStudentsFromDB();
+            if (items == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return items;
         }
         /// <summary>
         /// Get student
@@ -44,6 +50,27 @@ namespace SchoolAppToday.Controller
         }
 
         /// <summary>
+        /// Get student by id
+        /// </summary>
+        /// <remarks>
+        /// Get student by id
+        /// </remarks>
+        /// <returns></returns>
+        /// <response code="200"></response>
+        [Route("api/student/{id}")]
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public GET_STUDENT_BY_ID_PS_Result GetStudentById(int id)
+        {
+            GET_STUDENT_BY_ID_PS_Result item = studentManager.GetStudentsByIdFromDB(id);
+            if (item == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return item;
+        }
+
+        /// <summary>
         /// delete student
         /// </summary>
         /// <remarks>
@@ -53,6 +80,7 @@ namespace SchoolAppToday.Controller
         /// <response code="200"></response>
         [Route("api/student/{id}")]
         [HttpDelete]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult Delete(int id)
         {
             if (studentManager.DeleteStudentFromDB(id))
@@ -60,20 +88,20 @@ namespace SchoolAppToday.Controller
             else return BadRequest("Not a valid student id");
         }
 
-
         /// <summary>
-        /// Update student
+        /// Update a student
         /// </summary>
         /// <remarks>
-        /// Update student
+        /// Update a student
         /// </remarks>
         /// <returns></returns>
         /// <response code="200"></response>
         [Route("api/student/update")]
         [HttpPut]
-        public IHttpActionResult UpdateSudent([FromBody]Students stud)
+        [Authorize(Roles = "Admin")]
+        public IHttpActionResult UpdateStudent([FromBody]StudentInfosModel stud)
         {
-            if(studentManager.UpdateStudentIntoDB(stud))
+            if (studentManager.UpdateStudentIntoDB(stud))
                 return Ok();
             else return BadRequest("Not a valid student to update");
         }

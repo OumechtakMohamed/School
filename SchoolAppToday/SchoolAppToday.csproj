@@ -230,6 +230,18 @@
   <ItemGroup>
     <Content Include="Database\Insertion\InsertSubjects.sql" />
     <Content Include="Database\Insertion\InsertClasses.sql" />
+    <Content Include="Database\Stored Procedures\ADD_TEACHER_TO_CLASSE_PS.sql" />
+    <Content Include="Database\Stored Procedures\DELETE_TEACHER_FROM_CLASSE_PS.sql" />
+    <Content Include="Database\Stored Procedures\DELETE_TEACHER_PS.sql" />
+    <Content Include="Database\Stored Procedures\DELETE_STUDENT_PS.sql" />
+    <Content Include="Database\Stored Procedures\GET_STUDENT_BY_ID_PS .sql" />
+    <Content Include="Database\Stored Procedures\UPDATE_STUDENT_BY_ID_PS.sql" />
+    <Content Include="Database\Stored Procedures\UPDATE_TEACHER_BY_ID_PS.sql" />
+    <Content Include="Database\Stored Procedures\GET_TEACHER_BY_ID_PS .sql" />
+    <Content Include="Database\Stored Procedures\GET_TEACHERS_PS.sql" />
+    <Content Include="Database\Stored Procedures\GET_STUDENTS_PS.sql" />
+    <Content Include="Database\Stored Procedures\Login_History_PS.sql" />
+    <Content Include="Database\Tables\LoginHistory.sql" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -288,6 +300,18 @@
     <Compile Include="Controller\StudentController.cs" />
     <Compile Include="Controller\SubjectController.cs" />
     <Compile Include="Controller\TeacherController.cs" />
+    <Compile Include="GET_STUDENTS_PS_Result.cs">
+      <DependentUpon>SchoolApp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GET_STUDENT_BY_ID_PS_Result.cs">
+      <DependentUpon>SchoolApp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GET_TEACHERS_PS_Result.cs">
+      <DependentUpon>SchoolApp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GET_TEACHER_BY_ID_PS_Result.cs">
+      <DependentUpon>SchoolApp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -365,16 +389,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>47475</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:47475/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

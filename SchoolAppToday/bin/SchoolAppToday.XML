@@ -54,6 +54,26 @@
             <returns></returns>
             <response code="200"></response>
         </member>
+        <member name="M:SchoolAppToday.Controller.ClasseController.AddTeacherToClasse(System.String,System.Int32)">
+            <summary>
+            Insert teacher into classe
+            </summary>
+            <remarks>
+            Insert teacher into classe
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.ClasseController.DeleteTeacherFromClasse(System.String,System.Int32)">
+            <summary>
+            Delete a teacher from classe
+            </summary>
+            <remarks>
+            Delete a teacher from classe
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
         <member name="M:SchoolAppToday.Controller.ClasseController.UpdateClasse(SchoolAppToday.Classes)">
             <summary>
             Update a classe
@@ -84,6 +104,16 @@
             <returns></returns>
             <response code="200"></response>
         </member>
+        <member name="M:SchoolAppToday.Controller.StudentController.GetStudentById(System.Int32)">
+            <summary>
+            Get student by id
+            </summary>
+            <remarks>
+            Get student by id
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
         <member name="M:SchoolAppToday.Controller.StudentController.Delete(System.Int32)">
             <summary>
             delete student
@@ -94,12 +124,12 @@
             <returns></returns>
             <response code="200"></response>
         </member>
-        <member name="M:SchoolAppToday.Controller.StudentController.UpdateSudent(SchoolAppToday.Students)">
+        <member name="M:SchoolAppToday.Controller.StudentController.UpdateStudent(SchoolAppToday.Models.StudentInfosModel)">
             <summary>
-            Update student
+            Update a student
             </summary>
             <remarks>
-            Update student
+            Update a student
             </remarks>
             <returns></returns>
             <response code="200"></response>
@@ -154,12 +184,22 @@
             <returns></returns>
             <response code="200"></response>
         </member>
-        <member name="M:SchoolAppToday.Controller.TeacherController.GetTeachers">
+        <member name="M:SchoolAppToday.Controller.TeacherController.GetStudents">
             <summary>
             Get all teachers
             </summary>
             <remarks>
             Get a list of all teachers
+            </remarks>
+            <returns></returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:SchoolAppToday.Controller.TeacherController.GetTeacherById(System.Int32)">
+            <summary>
+            Get teacher by id
+            </summary>
+            <remarks>
+            Get teacher by id
             </remarks>
             <returns></returns>
             <response code="200"></response>
@@ -204,7 +244,7 @@
             <returns></returns>
             <response code="200"></response>
         </member>
-        <member name="M:SchoolAppToday.Controller.TeacherController.UpdateTeacher(SchoolAppToday.Teachers)">
+        <member name="M:SchoolAppToday.Controller.TeacherController.UpdateTeacher(SchoolAppToday.Models.TeacherInfosModel)">
             <summary>
             Update a teacher
             </summary>
