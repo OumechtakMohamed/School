@@ -234,6 +234,7 @@
     <Content Include="Database\Stored Procedures\DELETE_TEACHER_FROM_CLASSE_PS.sql" />
     <Content Include="Database\Stored Procedures\DELETE_TEACHER_PS.sql" />
     <Content Include="Database\Stored Procedures\DELETE_STUDENT_PS.sql" />
+    <Content Include="Database\Stored Procedures\GET_Students_FOR_TEACHER_By_Id_PS.sql" />
     <Content Include="Database\Stored Procedures\GET_STUDENT_BY_ID_PS .sql" />
     <Content Include="Database\Stored Procedures\UPDATE_STUDENT_BY_ID_PS.sql" />
     <Content Include="Database\Stored Procedures\UPDATE_TEACHER_BY_ID_PS.sql" />
@@ -300,6 +301,15 @@
     <Compile Include="Controller\StudentController.cs" />
     <Compile Include="Controller\SubjectController.cs" />
     <Compile Include="Controller\TeacherController.cs" />
+    <Compile Include="GET_Students_FOR_TEACHER_By_Id_PS_Result.cs">
+      <DependentUpon>SchoolApp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GET_Students_FOR_TEACHER_PS_Result.cs">
+      <DependentUpon>SchoolApp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GET_Students_FOR_The_TEACHER_PS_Result.cs">
+      <DependentUpon>SchoolApp.tt</DependentUpon>
+    </Compile>
     <Compile Include="GET_STUDENTS_PS_Result.cs">
       <DependentUpon>SchoolApp.tt</DependentUpon>
     </Compile>

@@ -12,13 +12,10 @@ namespace SchoolAppToday.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Code { get; set; }
-        public Subjects Subject { get; set; }
-        public List<StudentClasseModel> ClassesAndStudents { get; set; }
     }
-
-    public class StudentClasseModel
+    public class TeacherStudentsInfosModel
     {
-        public String StudentFullName { get; set; }
-        public Classes Classe { get; set; }
+        public GET_TEACHER_BY_ID_PS_Result Infos { get; set; }
+        public List<GET_Students_FOR_TEACHER_By_Id_PS_Result> ClassesAndStudents { get; set; }
     }
 }

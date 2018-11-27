@@ -184,5 +184,32 @@ namespace SchoolAppToday
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETE_TEACHER_FROM_CLASSE_PS", teacher_idParameter, codeParameter);
         }
+    
+        public virtual ObjectResult<GET_Students_FOR_TEACHER_PS_Result> GET_Students_FOR_TEACHER_PS(Nullable<int> teacher_id)
+        {
+            var teacher_idParameter = teacher_id.HasValue ?
+                new ObjectParameter("teacher_id", teacher_id) :
+                new ObjectParameter("teacher_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_Students_FOR_TEACHER_PS_Result>("GET_Students_FOR_TEACHER_PS", teacher_idParameter);
+        }
+    
+        public virtual ObjectResult<GET_Students_FOR_The_TEACHER_PS_Result> GET_Students_FOR_The_TEACHER_PS(Nullable<int> teacher_id)
+        {
+            var teacher_idParameter = teacher_id.HasValue ?
+                new ObjectParameter("teacher_id", teacher_id) :
+                new ObjectParameter("teacher_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_Students_FOR_The_TEACHER_PS_Result>("GET_Students_FOR_The_TEACHER_PS", teacher_idParameter);
+        }
+    
+        public virtual ObjectResult<GET_Students_FOR_TEACHER_By_Id_PS_Result> GET_Students_FOR_TEACHER_By_Id_PS(Nullable<int> teacher_id)
+        {
+            var teacher_idParameter = teacher_id.HasValue ?
+                new ObjectParameter("teacher_id", teacher_id) :
+                new ObjectParameter("teacher_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_Students_FOR_TEACHER_By_Id_PS_Result>("GET_Students_FOR_TEACHER_By_Id_PS", teacher_idParameter);
+        }
     }
 }

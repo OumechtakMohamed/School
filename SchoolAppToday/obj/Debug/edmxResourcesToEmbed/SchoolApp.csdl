@@ -162,6 +162,15 @@
       <Parameter Name="teacher_id" Mode="In" Type="Int32" />
       <Parameter Name="code" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="GET_Students_FOR_TEACHER_PS" ReturnType="Collection(SchoolAppModel.GET_Students_FOR_TEACHER_PS_Result)">
+      <Parameter Name="teacher_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GET_Students_FOR_The_TEACHER_PS" ReturnType="Collection(SchoolAppModel.GET_Students_FOR_The_TEACHER_PS_Result)">
+      <Parameter Name="teacher_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GET_Students_FOR_TEACHER_By_Id_PS" ReturnType="Collection(SchoolAppModel.GET_Students_FOR_TEACHER_By_Id_PS_Result)">
+      <Parameter Name="teacher_id" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="GET_STUDENTS_PS_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -202,5 +211,23 @@
     <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
     <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
     <Property Type="String" Name="Label" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GET_Students_FOR_TEACHER_PS_Result">
+    <Property Type="String" Name="User_Id" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="FullName" Nullable="true" />
+    <Property Type="String" Name="Classe_Code" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="GET_Students_FOR_The_TEACHER_PS_Result">
+    <Property Type="String" Name="User_Id" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="FullName" Nullable="true" />
+    <Property Type="String" Name="Classe_Code" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Classe_Label" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GET_Students_FOR_TEACHER_By_Id_PS_Result">
+    <Property Type="String" Name="User_Id" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="FullName" Nullable="true" />
+    <Property Type="String" Name="Classe_Code" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Classe_Label" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
   </ComplexType>
 </Schema>

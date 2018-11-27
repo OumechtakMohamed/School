@@ -109,6 +109,15 @@
   <Function Name="GET_STUDENT_BY_ID_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="student_id" Type="int" Mode="In" />
   </Function>
+  <Function Name="GET_Students_FOR_TEACHER_By_Id_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="teacher_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GET_Students_FOR_TEACHER_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="teacher_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GET_Students_FOR_The_TEACHER_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="teacher_id" Type="int" Mode="In" />
+  </Function>
   <Function Name="GET_STUDENTS_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="GET_TEACHER_BY_ID_PS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="teacher_id" Type="int" Mode="In" />

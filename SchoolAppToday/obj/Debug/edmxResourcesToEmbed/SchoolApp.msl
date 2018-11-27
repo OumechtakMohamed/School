@@ -109,5 +109,35 @@
     <FunctionImportMapping FunctionImportName="UPDATEE_STUDENT_BY_ID_PS" FunctionName="SchoolAppModel.Store.UPDATEE_STUDENT_BY_ID_PS" />
     <FunctionImportMapping FunctionImportName="ADD_TEACHER_TO_CLASSE_PS" FunctionName="SchoolAppModel.Store.ADD_TEACHER_TO_CLASSE_PS" />
     <FunctionImportMapping FunctionImportName="DELETE_TEACHER_FROM_CLASSE_PS" FunctionName="SchoolAppModel.Store.DELETE_TEACHER_FROM_CLASSE_PS" />
+    <FunctionImportMapping FunctionImportName="GET_Students_FOR_TEACHER_PS" FunctionName="SchoolAppModel.Store.GET_Students_FOR_TEACHER_PS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolAppModel.GET_Students_FOR_TEACHER_PS_Result">
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Classe_Code" ColumnName="Classe_Code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GET_Students_FOR_The_TEACHER_PS" FunctionName="SchoolAppModel.Store.GET_Students_FOR_The_TEACHER_PS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolAppModel.GET_Students_FOR_The_TEACHER_PS_Result">
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Classe_Code" ColumnName="Classe_Code" />
+          <ScalarProperty Name="Classe_Label" ColumnName="Classe_Label" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GET_Students_FOR_TEACHER_By_Id_PS" FunctionName="SchoolAppModel.Store.GET_Students_FOR_TEACHER_By_Id_PS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolAppModel.GET_Students_FOR_TEACHER_By_Id_PS_Result">
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Classe_Code" ColumnName="Classe_Code" />
+          <ScalarProperty Name="Classe_Label" ColumnName="Classe_Label" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

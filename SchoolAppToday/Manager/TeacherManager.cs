@@ -39,35 +39,18 @@ namespace SchoolAppToday.Manager
                            select c);
             return classes.ToList();
         }
-        public TeacherInfosModel GetTeacherDataFromDB()
+        public TeacherStudentsInfosModel GetTeacherDataFromDB()
         {
-            TeacherInfosModel t = new TeacherInfosModel();
+            TeacherStudentsInfosModel t = new TeacherStudentsInfosModel();
             var claimsIdentity = HttpContext.Current.User.Identity as ClaimsIdentity;
             var userStore = new UserStore<ApplicationUser>(new ApplicationDbContext());
             var manager = new UserManager<ApplicationUser>(userStore);
             string identifiant = claimsIdentity.Claims.Where(claim => claim.Type == "Id").FirstOrDefault().Value;
-            t.FirstName = claimsIdentity.Claims.Where(claim => claim.Type == "FirstName").FirstOrDefault().Value;
-            t.LastName = claimsIdentity.Claims.Where(claim => claim.Type == "LastName").FirstOrDefault().Value;
-            t.Email = claimsIdentity.Claims.Where(claim => claim.Type == "Email").FirstOrDefault().Value;
-            t.Subject = (from a in db.Teachers
-                        join c in db.Subjects on a.Subject_Code equals c.Code
-                        where a.User_Id == identifiant
-                        select c).SingleOrDefault();
-            var suat = (from st in db.Students
-                        join c in db.Classes on st.Classe_Code equals c.Code
-                        join ass in db.Ass_Prof_Classe on c.Code equals ass.ClasseCode
-                        join tch in db.Teachers on ass.Prof_Id equals tch.Id
-                        where tch.User_Id == identifiant
-                        select new { c, StudentFullName = st.FullName }).ToList();
-
-            t.ClassesAndStudents = new List<StudentClasseModel>();
-            foreach (var foo in suat)
-            {
-                StudentClasseModel hr = new StudentClasseModel();
-                hr.Classe = foo.c;
-                hr.StudentFullName = foo.StudentFullName;
-                t.ClassesAndStudents.Add(hr);
-            }
+            int teacher_id = db.Teachers.Where(tch => tch.User_Id == identifiant).SingleOrDefault().Id;
+            t.Infos = db.Database.SqlQuery<GET_TEACHER_BY_ID_PS_Result>("GET_TEACHER_BY_ID_PS @TeacherID",
+            new SqlParameter("TeacherID", teacher_id)).SingleOrDefault();
+            t.ClassesAndStudents = db.Database.SqlQuery<GET_Students_FOR_TEACHER_By_Id_PS_Result>("GET_Students_FOR_TEACHER_By_Id_PS @TeacherID",
+            new SqlParameter("TeacherID", teacher_id)).ToList();
             return t;
         }
 

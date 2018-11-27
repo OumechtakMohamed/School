@@ -40,6 +40,9 @@ import { StudentDetailComponent } from './views/students/student-detail/student-
 import { MainNavComponent } from './shared/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { StudentService } from './services/students/student.service';
+import { SubjectService } from './services/subjects/subject.service';
+import { TeacherService } from './services/teachers/teacher.service';
 
 @NgModule({
   declarations: [
@@ -86,7 +89,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
     MatIconModule,
     MatListModule
   ],
-  providers: [UserService, AuthGuard, ClasseService],
+  providers: [UserService, AuthGuard, ClasseService, StudentService, SubjectService, TeacherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

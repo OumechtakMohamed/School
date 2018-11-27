@@ -67,9 +67,14 @@ namespace SchoolAppToday.Controller
         [Route("api/TeacherData")]
         [HttpGet]
         [Authorize(Roles = "Teacher")]
-        public TeacherInfosModel GetTeacher()
+        public TeacherStudentsInfosModel GetTeacher()
         {
-            return teacherManager.GetTeacherDataFromDB();
+            TeacherStudentsInfosModel item = teacherManager.GetTeacherDataFromDB();
+            if (item == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return item;
         }
 
         /// <summary>
